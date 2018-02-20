@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 
 class Details extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -11,7 +11,7 @@ class Details extends Component {
             <div>
               {/* Logout and Profile stuff */}
             </div>
-        )
+        );
     }
 }
 
