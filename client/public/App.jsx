@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import /*SomeClass*/ from /* './components/SomeClass.jsx' */;
+import Banner from './components/Banner.jsx';
+import View from './components/View.jsx';
 
 class App extends Component {
     constructor(){
@@ -9,7 +10,8 @@ class App extends Component {
     render() {
         return (
             <div>
-              {/* <SomeClass /> */}
+              <Banner />
+              <View />
             </div>
         )
     }
