@@ -3,8 +3,8 @@ import Banner from './components/Banner.jsx';
 import View from './components/View.jsx';
 
 class App extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -13,7 +13,7 @@ class App extends Component {
               <Banner />
               <View />
             </div>
-        )
+        );
     }
 }
 

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Postlist from './views/Postlist.jsx';
 import Profile from './views/Profile.jsx';
-import Comments from './views/Profile.jsx';
-
+import Comments from './views/Comments.jsx';
 
 class View extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -19,7 +18,7 @@ class View extends Component {
               <Comments />
             </div>
           </div>
-        )
+        );
     }
 }
 

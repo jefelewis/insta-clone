@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 
 class Banner extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -12,7 +12,7 @@ class Banner extends Component {
             <div>
               {/* Search Bar and Search Button */}
             </div>
-        )
+        );
     }
 }
 

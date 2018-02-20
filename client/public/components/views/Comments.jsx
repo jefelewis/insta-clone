@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //	There will be lots of sub components here
-//	path " import X from './profile/X.jsx' "
+//	path " import X from './comment/X.jsx' "
+
 /*
 	Your Pofile Image Compnent
 	Video/Picture Component
@@ -9,18 +10,18 @@ import React, { Component } from 'react';
 	View All Component (Could be added to Comments Component)
 */
 
-class Profile extends Component {
+class Comment extends Component {
     constructor() {
         super();
     }
 
     render() {
         return (
-          <div>
-            
-          </div>
+            <div>
+              
+            </div>
         );
     }
 }
 
-export default Profile;
+export default Comment;

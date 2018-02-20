@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Post from './Post.jsx';
 
-
-
 class Post extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -13,7 +11,7 @@ class Post extends Component {
             <div>
               {/* Render a number of posts map function*/}
             </div>
-        )
+        );
     }
 }
 

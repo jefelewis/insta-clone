@@ -4,8 +4,8 @@ import Details from './banner/Details.jsx';
 
 
 class Banner extends Component {
-    constructor(){
-        super()
+    constructor() {
+        super();
     }
 
     render() {
@@ -21,7 +21,7 @@ class Banner extends Component {
                 <Details />
               </div>
             </div>
-        )
+        );
     }
 }
 
