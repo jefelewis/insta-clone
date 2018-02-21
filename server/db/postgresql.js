@@ -18,14 +18,29 @@ const Users = sequelize.define('users', {
     primaryKey: true,
     autoIncrement: true,
     unique: true
-  }
+  },
   username: {
     type: Sequelize.STRING,
     unique: true
-  }
+  },
   bio: Sequelize.STRING,
   profile_picture: Sequelize.STRING
 });
+
+const Posts = sequelize.define('posts', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true
+  },
+  type: Sequelize.STRING,
+  body: Sequelize.STRING,
+  user_id: {
+    type: Sequelize.INTEGER,
+    
+  }
+})
 
 // User.sync({ force: true })
 //   .then(() => {

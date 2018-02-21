@@ -15,4 +15,4 @@ class Postlist extends Component {
     }
 }
 
-export default Post;
+export default Postlist;
