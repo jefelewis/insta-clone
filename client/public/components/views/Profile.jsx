@@ -10,17 +10,18 @@ import React, { Component } from 'react';
 */
 
 class Profile extends Component {
-    constructor() {
-        super();
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-          <div>
-            
-          </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <ProfilePic />
+        <ProfileInfo />
+      </div>
+    );
+  }
 }
 
 export default Profile;
