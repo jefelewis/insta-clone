@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Post from './Post.jsx';
 
-class Post extends Component {
+class Postlist extends Component {
     constructor() {
         super();
     }

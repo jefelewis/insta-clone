@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import API from './../../../config.js';
 
 class Login extends Component {
     constructor() {
@@ -7,14 +8,19 @@ class Login extends Component {
           email: '',
           password: ''
         }
-      
+      this.onClickHandler = this.onClickHandler.bind(this);
+      this.onChangeHandler = this.onChangeHandler.bind(this);
     }
     onClickHandler(e) {
-
+      //Authentication
+      
     }
 
     onChangeHandler(e) {
-      
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+      console.log(this.state);
     }
     render() {
         return (
