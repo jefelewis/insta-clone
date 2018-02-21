@@ -12,11 +12,20 @@ const sequelize = new Sequelize(
     }
   });
 
-const User = sequelize.define('user', {
-  username: Sequelize.STRING,
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING
-})
+const Users = sequelize.define('users', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true
+  }
+  username: {
+    type: Sequelize.STRING,
+    unique: true
+  }
+  bio: Sequelize.STRING,
+  profile_picture: Sequelize.STRING
+});
 
 // User.sync({ force: true })
 //   .then(() => {
