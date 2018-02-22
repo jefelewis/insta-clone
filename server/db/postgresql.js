@@ -1,16 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(
-  'greenField',
-  'thegram',
-  'topshelf',
-  {
-    host: 'localhost',
-    dialect: 'postgres',
-    pool: {
-      max: 4,
-      min: 0
-    }
-  });
+const sequelize = new Sequelize('postgres://bxthcohs:zeNJpa1BQgx7vWSa8ZGn-8yDl3YaP6FC@hanno.db.elephantsql.com:5432/bxthcohs');
 
 const Users = sequelize.define('users', {
   id: {
@@ -36,11 +25,10 @@ const Posts = sequelize.define('posts', {
   },
   type: Sequelize.STRING,
   body: Sequelize.STRING,
-  user_id: {
-    type: Sequelize.INTEGER,
-    
-  }
-})
+  user_id: Sequelize.INTEGER,
+});
+
+Posts.belongsTo(Users, {foreignKey: 'user_id'});
 
 // User.sync({ force: true })
 //   .then(() => {
