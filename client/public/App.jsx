@@ -7,6 +7,7 @@ import Profile from './components/views/Profile.jsx';
 const firebase = require('firebase');
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+
 class App extends Component {
     constructor() {
         super();
@@ -66,6 +67,7 @@ class App extends Component {
             // </div>
             <Router>
                 <div>
+                <Banner />
                 <ul>
                     <li>
                     <Link to="/">Home</Link>
@@ -75,9 +77,8 @@ class App extends Component {
                 </ul>
                 <Route exact path="/" component={View} />
                 <Route path="/user" component={Profile} />
-                <Route path="/login" component={Login} />
-                <Login change={this.onChangeHandler} click={this.onClickHandler} />
-                <Banner />
+                <Route path="/login" render={(props) => ( <Login change={this.onChangeHandler} click={this.onClickHandler}/> )} />
+                {/* <Login change={this.onChangeHandler} click={this.onClickHandler} /> */}
                 <View />
                 </div>
             </Router>

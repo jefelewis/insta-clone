@@ -10,17 +10,12 @@ class Banner extends Component {
 
     render() {
         return (
-            <div>
-              <div>
-                {/* Some Stuff here, logo, etc; Could Do another Component Here if you Want */}
-              </div>
-              <div>
-                <Search />
-              </div>
-              <div>
-                <Details />
-              </div>
-            </div>
+          <form className="navbar-form navbar-left" role="search">
+          <div className="form-group">
+          <input type="text" className="form-control" placeholder="Search"/>
+          </div>
+          <button type="submit" className="btn btn-default">Submit</button>
+          </form>
         );
     }
 }
