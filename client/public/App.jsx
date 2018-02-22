@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Banner from './components/Banner.jsx';
 import View from './components/View.jsx';
-import API from './../../config.js';
+import API from './config.js';
 import Login from './components/views/Login.jsx';
 import Profile from './components/views/Profile.jsx';
 const firebase = require('firebase');
