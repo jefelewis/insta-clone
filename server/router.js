@@ -1,5 +1,7 @@
 // Requirements: Establish Router
+const path = require('path');
 const router = require('express').Router();
+
 
 // Requirements: Controllers
 const databaseController = require('./controllers/databaseController');

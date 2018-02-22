@@ -61,3 +61,4 @@ typings/
 .env
 
 bundle.js
+config.js

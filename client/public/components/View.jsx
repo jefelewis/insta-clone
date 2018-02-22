@@ -14,7 +14,7 @@ class View extends Component {
             <div>
               {/* Need to Handle these loading on certain conditions */}
               <Postlist />
-              <Profile />
+              {/* <Profile /> */}
               <Comments />
             </div>
           </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-class Banner extends Component {
+class Search extends Component {
     constructor() {
         super();
     }
