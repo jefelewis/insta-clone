@@ -8,7 +8,7 @@ const Posts = sequelize.define('posts', {
     autoIncrement: true,
     unique: true
   },
-  type: Sequelize.STRING,
+  type: Sequelize.INTEGER,
   body: Sequelize.STRING,
   likesCount: Sequelize.INTEGER,
   user_id: Sequelize.INTEGER,
