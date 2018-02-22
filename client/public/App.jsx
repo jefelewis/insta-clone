@@ -12,6 +12,7 @@ class App extends Component {
             
         }
         this.componentWillMount = this.componentWillMount.bind(this);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
     }
 
     componentWillMount() {
@@ -33,12 +34,18 @@ class App extends Component {
             }
         })
     }
+    onChangeHandler(e) {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+        console.log(this.state);
+    }
     render() {
         
         return (
             <div>
               {/*Load Login if not logged in  */}
-              <Login />
+              {/* <Login change={this.onChangeHandler}/> */}
               {/* Otherwise Load Banner and View */}
               <Banner />
               <View />
