@@ -62,3 +62,4 @@ typings/
 
 bundle.js
 config.js
+package-lock.json
