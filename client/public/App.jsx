@@ -20,7 +20,7 @@ class App extends Component {
 
     componentWillMount() {
         var config = {
-            apiKey: API,
+            apiKey: API.fireBaseApiKey,
             authDomain: "top-shelf-708be.firebaseapp.com",
             databaseURL: "https://top-shelf-708be.firebaseio.com",
             projectId: "top-shelf-708be",

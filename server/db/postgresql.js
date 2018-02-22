@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('postgres://bxthcohs:zeNJpa1BQgx7vWSa8ZGn-8yDl3YaP6FC@hanno.db.elephantsql.com:5432/bxthcohs');
+const API = require('../../client/public/config.js');
+const sequelize = new Sequelize(API.elephantSqlUrl);
 
 const Posts = sequelize.define('posts', {
   id: {
