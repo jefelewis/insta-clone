@@ -16,6 +16,9 @@ router.get('/bundle.js', function(req, res) {
   res.sendFile(path.join(__dirname + '/../client/public/bundle.js'));
 });
 
+// router.get('*', function(req, res) {
+//   res.sendFile(path.resolve(__dirname, '/../client/public', 'index.html'))
+// })
 
 // Exports: Router
 module.exports = router;

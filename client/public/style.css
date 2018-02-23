@@ -20,16 +20,32 @@ div.right {
 
 .dropdown-toggle {
   display: block;
+  position: absolute !important;
   background: url("./ButtonPic.jpg") no-repeat;
   background-size: 100px 100px;
   min-width: 100px;
   min-height: 100px;
 }
 
-input {
-  width: 
-}
+/* input {
+  width:  
+} */
 
 .row {
-  border: 10px solid black;
+  border: 10px solid rgb(62, 113, 208);
+  background-color: rgb(75, 189, 238);
+}
+
+li.dropdown {
+  width: 0;
+  height: 0;
+  list-style: none;
+}
+
+.borderless {
+  border: none !important;
+}
+
+.dropdown-toggle {
+  aria-expanded: true;
 }

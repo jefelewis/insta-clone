@@ -68,9 +68,11 @@ class App extends Component {
             // </div>
             
                 <div>
-                <Banner />      
+                <Banner />
                 <View />
                 </div>
+                
+                
             
         );
     }
