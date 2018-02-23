@@ -41,43 +41,15 @@ class Details extends Component {
           <div className="row borderless">
           <div className="col-md-7"></div>
             <div className="col-md-5">
-              {/* <Router>
-                <div>
-                  <ActiveDropdown
-                    activeRoutes={["/", "/user", "/login"]}
-                    baseClassName="dropdown-toggle"
-                    className="dotless"
-                    aria-expanded="true"
-                    title=""
-                  > */}
-                    <li>
-                      <Link to="/"> Home </Link>
-                    </li>
-
-                    <li>
-                      <Link to="/user"> User </Link>
-                    </li>
-
-                    <li>
-                      <Link to="/login"> Login </Link>
-                    </li>
-                  {/* </ActiveDropdown>
- 
-                  <Route path="/user" component={Profile} />
-                  <Route
-                    path="/login"
-                    render={props => (
-                      <Login
-                        change={this.onChangeHandler}
-                        click={this.onClickHandler}
-                      />
-                    )}
-                  />
-                  <Route exact path="/" component={View} />
-
-                  <View />
-                </div>
-              </Router> */}
+              <li>
+                <Link to="/"> Home </Link>
+              </li>
+              <li>
+                <Link to="/user"> User </Link>
+              </li>
+              <li>
+                <Link to="/login"> Login </Link>
+              </li>
             </div>
           </div>
         </div>
