@@ -71,7 +71,7 @@ class App extends Component {
                 <Banner />
                 
                
-                <ActiveDropdown activeRoutes={['/', '/user', '/login']} baseClassName="dropdown-toggle" title="Profile">
+                <ActiveDropdown activeRoutes={['/', '/user', '/login']} baseClassName="dropdown-toggle" title="">
                     <li><Link to="/"> Home </Link></li>
                    
                     <li><Link  to="/user"> User </Link></li>
@@ -82,7 +82,7 @@ class App extends Component {
                 <Route path="/user" component={Profile} />
                 <Route path="/login" render={(props) => ( <Login change={this.onChangeHandler} click={this.onClickHandler}/> )} />
                 <Route exact path="/" component={View} />
-                {/* <Login change={this.onChangeHandler} click={this.onClickHandler} /> */}
+               
                 <View />
                 </div>
             </Router>

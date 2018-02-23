@@ -17,3 +17,11 @@ div.left {
 div.right {
   float: right;
 }
+
+.dropdown-toggle {
+  display: block;
+  background: url("./ButtonPic.jpg") no-repeat;
+  background-size: 100px 100px;
+  min-width: 100px;
+  min-height: 100px;
+}
