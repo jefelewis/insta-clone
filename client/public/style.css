@@ -1,0 +1,51 @@
+div.btn-group {
+  border: 1px solid rgb(76, 134, 142);
+  padding: 20px;
+  width: 100%;
+  background-color: rgb(150, 150, 240)
+}
+
+div.top {
+  padding-top: 35px;
+  float: top;
+}
+
+div.left {
+  float: left;
+}
+
+div.right {
+  float: right;
+}
+
+.dropdown-toggle {
+  display: block;
+  position: absolute !important;
+  background: url("./ButtonPic.jpg") no-repeat;
+  background-size: 100px 100px;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+/* input {
+  width:  
+} */
+
+.row {
+  border: 10px solid rgb(62, 113, 208);
+  background-color: rgb(75, 189, 238);
+}
+
+li.dropdown {
+  /* width: 0;
+  height: 0; */
+  list-style: none;
+}
+
+.borderless {
+  border: none !important;
+}
+
+.dropdown-toggle {
+  aria-expanded: true;
+}
