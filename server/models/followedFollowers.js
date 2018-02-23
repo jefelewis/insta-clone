@@ -1,10 +1,22 @@
+const Sequelize = require('sequelize');
 const sequelize = require('../db/postgresql.js');
 const Users = require('./users.js');
 
-const FollowedFollowers = sequelize.define('followedFollowers', {
-  followed_id: Sequelize.INTEGER,
-  follower_id: Sequelize.INTEGER
-});
+let FollowedFollowers;
 
-FollowedFollowers.belongsTo(Users, {foreignKey: followed_id});
-FollowedFollowers.belongsTo(Users, {foreignKey: follower_id});
+const defineFollowedFollowers = () => {
+  return new Promise((reject, resolve) => {
+    FollowedFollowers = sequelize.define('followedFollowers', {});
+  });
+};
+
+defineFollowedFollowers()
+  .then(() => {
+    FollowedFollowers.belongsTo(Users);
+    FollowedFollowers.belongsTo(Users);
+  })
+  .catch(() => {
+    console.log('aint no thang');
+  });
+
+module.exports = FollowedFollowers;

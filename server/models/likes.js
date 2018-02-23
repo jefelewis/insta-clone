@@ -1,11 +1,23 @@
+const Sequelize = require('sequelize');
 const sequelize = require('../db/postgresql.js');
 const Posts = require('./posts.js');
 const Users = require('./users.js');
 
-const Likes = sequelize.define('likes', {
-  post_id: Sequelize.INTEGER,
-  user_id: Sequelize.INTEGER
-});
+let Likes;
 
-Likes.belongsTo(Posts, {foreignKey: post_id});
-Likes.belongsTo(Users, {foreignKey: user_id});
+const defineLikes = () => {
+  return new Promise((resolve, reject) => {
+    Likes = sequelize.define('likes', {});
+  });
+};
+
+defineLikes()
+  .then(() => {
+    Likes.belongsTo(Posts);
+    Likes.belongsTo(Users);
+  })
+  .catch(() => {
+    console.log('watuuup');
+  });
+
+module.exports = Likes;

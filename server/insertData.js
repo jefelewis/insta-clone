@@ -5,36 +5,37 @@ const FollowedFollowers = require('./models/followedFollowers.js');
 const fs = require('fs');
 const path = require('path');
 
-const readFile = (model, name) => {
-  return new Promise ((reject, resolve) => {
-    fs.readFile(path.join(__dirname, `../data/${name}.json`))
-      .then((data) => {
-        let result = JSON.stringify(data);
-        result = JSON.parse(result);
-    
-        model.bulkCreate(result)
-          .then(() => {
-            console.log(`${name} created`);
-          })
-          .catch(() => {
-            console.log(`error creating ${name}`);
-          });
-      })
-      .catch(() => {
-        console.log(`error reading ${name}`);
-      });
+const writeData = (model, name) => {
+  fs.readFile(path.join(__dirname, `../data/${name}.json`), (err, data) => {
+    if (err) {
+      console.log('error');
+    } else {
+      let result = JSON.stringify(data);
+      result = JSON.parse(result);
+      console.log(model, name);
+      model.bulkCreate(result)
+        .then(() => {
+          console.log(`${name} created`);
+        })
+        .catch(() => {
+          console.log(`error creating ${name}`);
+        });
+    }
   });
 };
 
-readFile(Users, 'users')
+Users.sync()
   .then(() => {
-    readFile(Posts, 'posts')
+    writeData(Users, 'users')
+    Posts.sync()
       .then(() => {
-        readFile(Likes, 'likes')
+        writeData(Posts, 'posts')
+        Likes.sync()
           .then(() => {
-            readFile(FollowedFollowers, 'followedFollowers')
+            writeData(Likes, 'likes')
+            FollowedFollowers.sync()
               .then(() => {
-                console.log('done creating everything');
+                writeData(FollowedFollowers, 'followedFollowers');
               });
           });
       });
