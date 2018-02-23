@@ -1,24 +1,16 @@
-// Requirements: Establish Router
 const path = require('path');
 const router = require('express').Router();
+const mongooseController = require('./controllers/mongooseController.js');
+const postgresqlController = require('./controllers/postgresqlController.js');
 
+router.route('/')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname + '/../client/public/index.html'));
+  });
 
-// Requirements: Controllers
-const mongooseController = require('./controllers/mongooseController');
+router.route('/bundle.js')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname + '/../client/public/bundle.js'));
+  });
 
-
-// Routes
-router.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/../client/public/index.html'));
-});
-
-router.get('/bundle.js', function(req, res) {
-  res.sendFile(path.join(__dirname + '/../client/public/bundle.js'));
-});
-
-// router.get('*', function(req, res) {
-//   res.sendFile(path.resolve(__dirname, '/../client/public', 'index.html'))
-// })
-
-// Exports: Router
 module.exports = router;

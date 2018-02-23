@@ -1,32 +1,28 @@
-const Users = require('./models/users.js');
-const Posts = require('./models/posts.js');
-const Likes = require('./models/likes.js');
-const FollowedFollowers = require('./models/followedFollowers.js');
+const Users = require('./db/postgresql/models/users.js');
+const Posts = require('./db/postgresql/models/posts.js');
+const Likes = require('./db/postgresql/models/likes.js');
+const FollowedFollowers = require('./db/postgresql/models/followedFollowers.js');
 const usersData = require('../data/users.json');
 const postsData = require('../data/posts.json');
 const likesData = require('../data/likes.json');
 const followedFollowersData = require('../data/followedFollowers.json');
 
-setTimeout(() => {
-  console.log(Users.destroy);
-}, 2000);
-
-// Users.destroy({ where: {} })
-//   .then(() => {
-//     Posts.destroy({ where: {} })
-//       .then(() => {
-//         Likes.destroy({ where: {} })
-//           .then(() => {
-//             FollowedFollowers.destroy({ where: {} })
-//               .then(() => {
-//                 console.log('done');
-//               })
-//           })
-//       })
-//   })
-//   .catch(() => {
-//     console.log('error destroying data');
-//   });
+Users.destroy({ where: {} })
+  .then(() => {
+    Posts.destroy({ where: {} })
+      .then(() => {
+        Likes.destroy({ where: {} })
+          .then(() => {
+            FollowedFollowers.destroy({ where: {} })
+              .then(() => {
+                console.log('done');
+              })
+          })
+      })
+  })
+  .catch(() => {
+    console.log('error destroying data');
+  });
 
 // Users.bulkCreate(usersData)
 //   .then(() => {
