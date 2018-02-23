@@ -1,45 +1,85 @@
-const Users = require('./models/users.js');
-const Posts = require('./models/posts.js');
-const Likes = require('./models/likes.js');
-const FollowedFollowers = require('./models/followedFollowers.js');
-const fs = require('fs');
-const path = require('path');
+const Users = require('./db/postgresql/models/users.js');
+const Posts = require('./db/postgresql/models/posts.js');
+const Likes = require('./db/postgresql/models/likes.js');
+const FollowedFollowers = require('./db/postgresql/models/followedFollowers.js');
+const usersData = require('../data/users.json');
+const postsData = require('../data/posts.json');
+const likesData = require('../data/likes.json');
+const followedFollowersData = require('../data/followedFollowers.json');
 
-const writeData = (model, name) => {
-  fs.readFile(path.join(__dirname, `../data/${name}.json`), (err, data) => {
-    if (err) {
-      console.log('error');
-    } else {
-      let result = JSON.stringify(data);
-      result = JSON.parse(result);
-      console.log(model, name);
-      model.bulkCreate(result)
-        .then(() => {
-          console.log(`${name} created`);
-        })
-        .catch(() => {
-          console.log(`error creating ${name}`);
-        });
-    }
-  });
-};
-
-Users.sync()
+Users.destroy({ where: {} })
   .then(() => {
-    writeData(Users, 'users')
-    Posts.sync()
+    Posts.destroy({ where: {} })
       .then(() => {
-        writeData(Posts, 'posts')
-        Likes.sync()
+        Likes.destroy({ where: {} })
           .then(() => {
-            writeData(Likes, 'likes')
-            FollowedFollowers.sync()
+            FollowedFollowers.destroy({ where: {} })
               .then(() => {
-                writeData(FollowedFollowers, 'followedFollowers');
-              });
-          });
-      });
+                console.log('done');
+              })
+          })
+      })
   })
   .catch(() => {
-    console.log('error');
+    console.log('error destroying data');
   });
+
+// Users.bulkCreate(usersData)
+//   .then(() => {
+//     console.log('users');
+//     Posts.bulkCreate(postsData)
+//       .then(() => {
+//         console.log('posts');
+//         Likes.bulkCreate(likesData)
+//           .then(() => {
+//             console.log('likes');
+//             FollowedFollowers.bulkCreate(followedFollowersData)
+//               .then(() => {
+//                 console.log('done writing data');
+//               });
+//           });
+//       });
+//   })
+//   .catch(() => {
+//     console.log('error writing data');
+//   });
+
+// usersData.forEach((data, index) => {
+//   Users.create(data)
+//     .then(() => {
+//       console.log('user:', usersData.length - index);
+//     })
+//     .catch(() => {
+//       console.log('error user:', usersData.length - index);
+//     });
+// });
+
+// postsData.forEach((data, index) => {
+//   Posts.create(data)
+//     .then(() => {
+//       console.log('post:', postsData.length - index);
+//     })
+//     .catch(() => {
+//       console.log('error post:', postsData.length - index);
+//     });
+// });
+
+// likesData.forEach((data, index) => {
+//   Likes.create(data)
+//     .then(() => {
+//       console.log('like:', likesData.length - index);
+//     })
+//     .catch(() => {
+//       console.log('error like:', likesData.length - index);
+//     });
+// });
+
+// followedFollowersData.forEach((data, index) => {
+//   FollowedFollowers.create(data)
+//     .then(() => {
+//       console.log('followedFollower:', followedFollowersData.length - index);
+//     })
+//     .catch(() => {
+//       console.log('error followedFollower:', followedFollowersData.length - index);
+//     });
+// });

@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const API = require('../../client/public/config.js');
-const sequelize = new Sequelize(API.elephantSqlUrl);
+const API = require('../../../client/public/config.js');
+const db = new Sequelize(API.elephantSqlUrl);
 
-sequelize.authenticate()
+db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
   })
@@ -10,4 +10,4 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-module.exports = sequelize;
+module.exports = db;
