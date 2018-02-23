@@ -8,8 +8,13 @@ import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends Component {
+<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
     constructor() {
         super();
+=======
+  constructor() {
+    super();
+>>>>>>> Cleaned Up App.jsx
         this.state = {
             
         }
@@ -29,6 +34,7 @@ class App extends Component {
 
     firebase.initializeApp(config);
 
+<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
 <<<<<<< f7ccab24bb13ad34990aa91197468eaffbe73a4b
     firebase.auth().onAuthStateChanged((User) => {
 =======
@@ -64,6 +70,8 @@ class App extends Component {
 =======
       errHandler.catch(e => console.log(e.message));
 =======
+=======
+>>>>>>> Cleaned Up App.jsx
         firebase.auth().onAuthStateChanged((User) => {
             if (User) {
                 console.log(User, 'logged in!');
@@ -88,6 +96,7 @@ class App extends Component {
         }
         
     }
+<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
     render() {
         return (
 					<div>
@@ -99,6 +108,8 @@ class App extends Component {
 >>>>>>> Fixed Conflicts
     }
   }
+=======
+>>>>>>> Cleaned Up App.jsx
   render() {
     return (
       <Router>
