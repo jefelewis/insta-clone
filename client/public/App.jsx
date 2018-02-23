@@ -58,17 +58,10 @@ class App extends Component {
   }
   render() {
     return (
-      // <div>
-      //   {/*Load Login if not logged in  */}
-      //   <Login change={this.onChangeHandler} click={this.onClickHandler} />
-      //   {/* Otherwise Load Banner and View */}
-      //   <Banner />
-      //   <View />
-      // </div>
       <Router>
 
         <div>
-          hi
+          
           <Banner />
           <Switch>
           <Route path="/main" component={View} />
