@@ -58,10 +58,10 @@ class App extends Component {
   }
   render() {
     return (
+
       <Router>
 
         <div>
-          
           <Banner />
           <Switch>
           <Route path="/main" component={View} />
