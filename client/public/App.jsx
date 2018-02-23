@@ -105,6 +105,7 @@ class App extends Component {
         }
         
     }
+<<<<<<< 1bc5bb1dff81c5788002a12564278fbd55698e53
 <<<<<<< 19ead8460bf5c450a1dce50c3882c3d76fd5e23e
 <<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
     render() {
@@ -144,6 +145,8 @@ class App extends Component {
     );
   }
 =======
+=======
+>>>>>>> rebase
     render() {
         return (
 					<div>
@@ -152,7 +155,6 @@ class App extends Component {
 					</div>
         );
     }
->>>>>>> Working Conditional Login Render
 }
 
 export default App;
