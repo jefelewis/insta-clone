@@ -41,7 +41,7 @@ class Details extends Component {
           <div className="row borderless">
           <div className="col-md-7"></div>
             <div className="col-md-5">
-              <Router>
+              {/* <Router>
                 <div>
                   <ActiveDropdown
                     activeRoutes={["/", "/user", "/login"]}
@@ -49,7 +49,7 @@ class Details extends Component {
                     className="dotless"
                     aria-expanded="true"
                     title=""
-                  >
+                  > */}
                     <li>
                       <Link to="/"> Home </Link>
                     </li>
@@ -61,10 +61,11 @@ class Details extends Component {
                     <li>
                       <Link to="/login"> Login </Link>
                     </li>
-                  </ActiveDropdown>
-                
+                  {/* </ActiveDropdown>
+ 
                   <Route path="/user" component={Profile} />
-                  <Route path="/login"
+                  <Route
+                    path="/login"
                     render={props => (
                       <Login
                         change={this.onChangeHandler}
@@ -73,9 +74,10 @@ class Details extends Component {
                     )}
                   />
                   <Route exact path="/" component={View} />
+
+                  <View />
                 </div>
- 
-              </Router>
+              </Router> */}
             </div>
           </div>
         </div>
