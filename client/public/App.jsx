@@ -16,7 +16,8 @@ class App extends Component {
     super();
 >>>>>>> Cleaned Up App.jsx
         this.state = {
-            
+						user: '',
+						loggedIn: false
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onClickHandler = this.onClickHandler.bind(this);
@@ -74,9 +75,17 @@ class App extends Component {
 >>>>>>> Cleaned Up App.jsx
         firebase.auth().onAuthStateChanged((User) => {
             if (User) {
-                console.log(User, 'logged in!');
+								console.log(User.email, 'logged in!');
+								this.setState({
+									user: User.email,
+									loggedIn: true
+								});
             } else {
-                console.log('Logged out!')
+								console.log('Logged out!')
+								this.setState({
+									user: '',
+									loggedIn: false
+								});
             }
         })
     }
@@ -90,12 +99,13 @@ class App extends Component {
         if (e.target.name === 'signin') {
             const errHandler = firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
             errHandler.catch(e => console.log(e.message));
-        } else {
+        } else if (e.target.name === 'create') {
             const errHandler = firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
             errHandler.catch(e => console.log(e.message));
         }
         
     }
+<<<<<<< 19ead8460bf5c450a1dce50c3882c3d76fd5e23e
 <<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
     render() {
         return (
@@ -110,6 +120,9 @@ class App extends Component {
   }
 =======
 >>>>>>> Cleaned Up App.jsx
+=======
+<<<<<<< 435209bb8904280993ae3c8cbe63ab8d42ea86da
+>>>>>>> Working Conditional Login Render
   render() {
     return (
       <Router>
@@ -130,6 +143,16 @@ class App extends Component {
       </Router>
     );
   }
+=======
+    render() {
+        return (
+					<div>
+					<Banner active={this.state.loggedIn}/>
+					<View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.loggedIn}/>
+					</div>
+        );
+    }
+>>>>>>> Working Conditional Login Render
 }
 
 export default App;
