@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Postlist from './views/Postlist.jsx';
 import Profile from './views/Profile.jsx';
 import Comments from './views/Comments.jsx';
+import Login from './views/Login.jsx';
 
 class View extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class View extends Component {
           {/* Need to Handle these loading on certain conditions */}
           <Postlist />
           {/* <Profile /> */}
+          <Login click={this.props.click} change={this.props.change}/>
           <Comments />
         </div>
       </div>
