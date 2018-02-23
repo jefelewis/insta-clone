@@ -25,3 +25,11 @@ div.right {
   min-width: 100px;
   min-height: 100px;
 }
+
+input {
+  width: 
+}
+
+.row {
+  border: 10px solid black;
+}
