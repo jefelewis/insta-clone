@@ -29,6 +29,7 @@
     "popper.js": "^1.12.9",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
+    "react-bootstrap-navdropdown-active": "^0.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "sequelize": "^4.33.4",
