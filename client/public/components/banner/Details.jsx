@@ -18,11 +18,9 @@ class Details extends Component {
           <div className="row borderless">
             <div className="col-md-7"></div>
             <div className="col-md-5">
-              <ul>
-                <li><Link to="/"> Home </Link></li>
-                <li><Link to="/user"> User </Link></li>
-                <li><Link to="/login"> Login </Link></li>
-              </ul>
+                <button><Link to="/"> Home </Link></button><br />
+                <button><Link to="/user"> User </Link></button><br />
+                {!this.props.active ? null : <button name="logout" onClick={this.props.click} >Logout </button> }
             </div>
           </div>
         </div>
