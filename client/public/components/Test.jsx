@@ -1,6 +1,7 @@
 import React from 'react';
+import redux from 'redux';
 
-class Test from React.Component {
+class Test extends React.Component {
   constructor() {
     super();
 
@@ -9,7 +10,7 @@ class Test from React.Component {
 
   render() {
     return (
-      
+      <div></div>
     );
   }
 }
