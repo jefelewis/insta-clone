@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-// There will be lots of sub components here
-//path " import X from './post/X.jsx' "
-/*
-Your Pofile Image Compnent
-Video/Picture Component
-Like Bar Component
-Comments Component
-View All Component (Could be added to Comments Component)
-
-*/
-
-
+import Content from './post/Comment.jsx';
+import Info from './post/Info.jsx';
+import Likes from './post/Likes.jsx';
+import Comment from './post/Comment.jsx';
 class Post extends Component {
-    constructor(){
-        super()
-    }
+  constructor(props){
+    super(props)
+  }
 
-    render() {
-        return (
-            <div>
-              
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Content />
+        <Info />
+        <Likes />
+        <Comment />
+      </div>
+    )
+  }
 }
 
 export default Post;
