@@ -7,17 +7,8 @@ const path = require('path');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/public/')));
-app.use('/', router);
+app.use('/api', router);
 
-
-// Use: Static Files
-app.use(express.static(path.join(__dirname, '../client/public/')));
-
-// Use: Router
-app.use(router);
-
-
-// Listener
 const port = 9001;
 
 app.listen(port, function() {
