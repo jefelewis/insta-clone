@@ -31,7 +31,7 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((User) => {
       if (User) {
-        console.log(User, 'logged in!');
+        console.log(User.email, 'logged in!');
         this.setState({
           active: true
         });
@@ -61,6 +61,7 @@ class App extends Component {
       errHandler.catch((e) => console.log(e.message));
     }
   }
+ 
   render() {
     return (
       <Router>
