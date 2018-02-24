@@ -5,4 +5,6 @@ import React from 'react';
 import supertest from 'supertest';
 
 // Requirements: Component
-import App from '../client/public/App.jsx';
+
+test('', () => {
+})
