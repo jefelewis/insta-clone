@@ -1,0 +1,20 @@
+language: node_js
+node_js: node
+services: 
+  - postgresql
+before_install:
+  - psql -c 'CREATE DATABASE instagramtest;' -U postgres
+  - psql -c "CREATE USER root WITH PASSWORD '';" -U postgres
+  - psql -c 'ALTER USER root WITH SUPERUSER;' -U postgres
+install: 
+  - yarn
+  - yarn global add typescript
+  - yarn global add ts-node
+  - yarn build:rest-server
+  - yarn env
+  - yarn db:setup:rest-server
+script:
+  - yarn lint:rest-server
+  - yarn start:rest-server &
+  - sleep 10
+  - yarn run test:rest-server
