@@ -1,12 +1,17 @@
-language: node_js
-node_js: node
+language:
+  - node_js
+node_js:
+  - node
 services: 
   - postgresql
 before_install:
   - psql -c 'CREATE DATABASE instagramtest;' -U postgres
   - psql -c "CREATE USER root WITH PASSWORD '';" -U postgres
   - psql -c 'ALTER USER root WITH SUPERUSER;' -U postgres
-install: 
-  - npm install
+before_script:
+  - sleep 10
 script:
-  - npm test
+  - npm start
+  - sleep 10
+  - npm run dev
+  - sleep 10
