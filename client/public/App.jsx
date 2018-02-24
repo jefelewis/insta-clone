@@ -61,6 +61,7 @@ class App extends Component {
       errHandler.catch((e) => console.log(e.message));
     }
   }
+ 
   render() {
     return (
       <Router>

@@ -11,10 +11,10 @@ class Post extends Component {
   render() {
     return (
       <div>
-        <Content />
-        <Info />
-        <Likes />
-        <Comment />
+        <Content content={this.props.content}/>
+        <Info user={this.props.user} profileclick={this.props.profileclick}/>
+        <Likes like={this.props.like} likes={this.props.likes}/>
+        <Comment profileclick={this.props.profileclick} userone={this.props.userone} usertwo={this.props.usertwo} click={this.props.click}/>
       </div>
     )
   }
