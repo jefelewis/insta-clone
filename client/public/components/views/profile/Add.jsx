@@ -33,8 +33,9 @@ class Add extends React.Component{
         <input 
           style={{display: 'none'}} 
           type="file" 
-          onChange={this.fileSelectedHandler} />
-        <button onClick={}>Pick File</button>
+          onChange={this.fileSelectedHandler} 
+          ref={fileInput => this.fileInput = fileInput} />
+        <button onClick={() => this.fileInput.click()}>Pick File</button>
         <button onClick={this.fileUploadHandler}>Upload</button>
       </div>
     );
