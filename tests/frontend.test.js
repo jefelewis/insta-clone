@@ -2,9 +2,9 @@
 import React from 'react';
 
 // Requirements: Enzyme
-import {}  from 'enzyme';
+import {shallow, mount, render}  from 'enzyme';
 
-// Requirements: Component
+// Requirements: Components
 import App from '../client/public/App.jsx';
 
 
@@ -69,6 +69,7 @@ describe('<Details />', () => {
   it('Should not include the logout button if logged out', () => {
   });
 });
+
 
 
 
