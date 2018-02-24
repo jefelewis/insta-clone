@@ -5,19 +5,19 @@ import TopshelfPic from './banner/TopshelfPic.jsx';
 
 
 class Banner extends Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        return (
-        <div className="row">
-          <TopshelfPic />
-          <Search />
-          <Details />
-        </div>
-        );
-    }
+  render() {
+    return (
+      <div className="row">
+        <TopshelfPic />
+        <Search />
+        <Details />
+      </div>
+    );
+  }
 }
 
 export default Banner;
