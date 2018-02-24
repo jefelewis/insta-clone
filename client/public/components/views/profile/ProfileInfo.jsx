@@ -11,31 +11,34 @@ class ProfileInfo extends React.Component{
 
   render() {
     return (
-      <div>
-        <div className="userdetails">
-          <h5><strong>user.username</strong></h5>
-          <h6>user.bio</h6>
+      <div className="userinfo">
+        <div className="user">
+          <h5><strong>Jeff Lewis</strong></h5>
+        </div>
+
+        <div className="followuser">
+          <button type="button" className="btn btn-primary btn-sm">Follow</button>
         </div>
 
         <div className="posts">
           <h6><strong>Posts</strong></h6>
           <p>50</p>
         </div>
-
+        
         <div className="followers">
           <h6><strong>Followers</strong></h6>
           <p>400</p>
         </div>
-
+        
         <div className="following">
           <h6><strong>Following</strong></h6>
           <p>300</p>
         </div>
 
-        <div className="followuser">
-          <button type="button" class="btn btn-primary">Follow</button>
+        <div className="bio">
+          <h6>user.bio</h6>
         </div>
-
+        
       </div>
     );
   }
