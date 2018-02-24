@@ -8,16 +8,10 @@ import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends Component {
-<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
     constructor() {
         super();
-=======
-  constructor() {
-    super();
->>>>>>> Cleaned Up App.jsx
         this.state = {
-						user: '',
-						loggedIn: false
+          active: true
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onClickHandler = this.onClickHandler.bind(this);
@@ -35,17 +29,17 @@ class App extends Component {
 
     firebase.initializeApp(config);
 
-<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
-<<<<<<< f7ccab24bb13ad34990aa91197468eaffbe73a4b
     firebase.auth().onAuthStateChanged((User) => {
-=======
-<<<<<<< 525ff89b7ab80ac0d7cdf114d7171d39ae1f8b00
-    firebase.auth().onAuthStateChanged(User => {
->>>>>>> Fixed Conflicts
       if (User) {
         console.log(User, 'logged in!');
+        this.setState({
+          active: true
+        });
       } else {
         console.log('Logged out!');
+        this.setState({
+          active: false
+        })
       }
     });
   }
@@ -53,83 +47,27 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
     console.log(this.state);
   }
   onClickHandler(e) {
     if (e.target.name === 'signin') {
-      const errHandler = firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password);
+      const errHandler = firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
       errHandler.catch((e) => console.log(e.message));
-    } else {
-      const errHandler = firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password);
-<<<<<<< f7ccab24bb13ad34990aa91197468eaffbe73a4b
+    } else if (e.target.name === 'create') {
+      const errHandler = firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
       errHandler.catch((e) => console.log(e.message));
-=======
-      errHandler.catch(e => console.log(e.message));
-=======
-=======
->>>>>>> Cleaned Up App.jsx
-        firebase.auth().onAuthStateChanged((User) => {
-            if (User) {
-								console.log(User.email, 'logged in!');
-								this.setState({
-									user: User.email,
-									loggedIn: true
-								});
-            } else {
-								console.log('Logged out!')
-								this.setState({
-									user: '',
-									loggedIn: false
-								});
-            }
-        })
-    }
-    onChangeHandler(e) {
-        this.setState({
-          [e.target.name]: e.target.value
-        });
-        console.log(this.state);
-    }
-    onClickHandler(e) {
-        if (e.target.name === 'signin') {
-            const errHandler = firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
-            errHandler.catch(e => console.log(e.message));
-        } else if (e.target.name === 'create') {
-            const errHandler = firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-            errHandler.catch(e => console.log(e.message));
-        }
-        
-    }
-<<<<<<< 1bc5bb1dff81c5788002a12564278fbd55698e53
-<<<<<<< 19ead8460bf5c450a1dce50c3882c3d76fd5e23e
-<<<<<<< 8217e602b68e818505c1aa07eb5c86f40de3d68a
-    render() {
-        return (
-					<div>
-					<Banner />
-					<View click={this.onClickHandler} change={this.onChangeHandler}/>
-					</div>
-        );
->>>>>>> Cleaned Up App.jsx
->>>>>>> Fixed Conflicts
+    } else if (e.target.name === 'logout') {
+      const errHandler = firebase.auth().signOut();
+      errHandler.catch((e) => console.log(e.message));
     }
   }
-=======
->>>>>>> Cleaned Up App.jsx
-=======
-<<<<<<< 435209bb8904280993ae3c8cbe63ab8d42ea86da
->>>>>>> Working Conditional Login Render
   render() {
     return (
       <Router>
         <div>
-          <Banner />
-          <Switch>
+          <Banner active={this.state.active} click={this.onClickHandler} />
+          <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active}/>
+          {/* <Switch>
             <Route path="/main" component={View} />
             <Route  path="/login"
               render={props => (
@@ -139,22 +77,11 @@ class App extends Component {
                 />
               )}
             />
-          </Switch>
+          </Switch> */}
         </div>
       </Router>
     );
   }
-=======
-=======
->>>>>>> rebase
-    render() {
-        return (
-					<div>
-					<Banner active={this.state.loggedIn}/>
-					<View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.loggedIn}/>
-					</div>
-        );
-    }
 }
 
 export default App;

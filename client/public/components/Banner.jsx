@@ -5,8 +5,8 @@ import TopshelfPic from './banner/TopshelfPic.jsx';
 
 
 class Banner extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -14,7 +14,7 @@ class Banner extends Component {
       <div className="row">
         <TopshelfPic />
         <Search />
-        <Details />
+        <Details active={this.props.active} click={this.props.click}/>
       </div>
     );
   }
