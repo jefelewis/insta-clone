@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack -w",
     "start": "nodemon server/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
