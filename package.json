@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack -w",
     "start": "nodemon server/app.js",
-    "test": "jest"
+    "test": "jest --coverage --silent --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -35,5 +35,9 @@
     "react-router-dom": "^4.2.2",
     "sequelize": "^4.33.4",
     "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.4.1",
+    "jest": "^22.4.2"
   }
 }
