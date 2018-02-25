@@ -11,19 +11,20 @@ class ProfileInfo extends React.Component{
 
   render() {
     return (
-      <div className="container col-md-8" id="details">
+      <div className="container col-md-10" id="details">
 
         <div className="row">
-          <div className="col text-right text-align-center">
-            <h5><strong>Jeff Lewis</strong></h5>
-          </div>
-
-          <div className="col">
-            <button type="button" className="btn btn-primary btn-sm"><a/>Follow</button>
+          <div className="col text-center text-align-center">
+            <h4><strong>Username</strong></h4>
           </div>
         </div>
 
         <div className="row text-center">
+          <div className="col">
+            <img src="https://pvrinstitute.org/handlers/profileimagehandler.ashx?id=5262" id="profilepic"></img>
+          </div>
+
+
           <div className="col">
             <h6><strong>Posts</strong></h6>
             <p>50</p>
@@ -37,6 +38,10 @@ class ProfileInfo extends React.Component{
           <div className="col">
             <h6><strong>Following</strong></h6>
             <p>300</p>
+          </div>
+
+          <div className="col">
+            <button type="button" className="btn btn-primary btn-sm"><a/>Follow</button>
           </div>
         </div>
 
