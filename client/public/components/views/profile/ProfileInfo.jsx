@@ -11,10 +11,10 @@ class ProfileInfo extends React.Component{
 
   render() {
     return (
-      <div className="container col-md-8">
+      <div className="container col-md-8" id="details">
 
         <div className="row">
-          <div className="col align-text-center">
+          <div className="col text-right text-align-center">
             <h5><strong>Jeff Lewis</strong></h5>
           </div>
 
