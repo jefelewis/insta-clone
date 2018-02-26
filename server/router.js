@@ -6,7 +6,7 @@ const followingsFollowersController = require('./controllers/followingsFollowers
 
 router.route('/user')
   .post((req, res) => {
-    usersController.addUser(req, res)
+    usersController.addUser(req.body)
       .then(() => {
         res.sendStatus(200);
       })
@@ -15,7 +15,7 @@ router.route('/user')
       });
   })
   .get((req, res) => {
-    usersController.fetchUserInfo(req, res)
+    usersController.fetchUserInfo(req.query.username)
       .then((data) => {
         res.send(data);
       })
@@ -24,7 +24,7 @@ router.route('/user')
       });
   })
   .delete((req, res) => {
-    usersController.removeUser(req, res)
+    usersController.removeUser(req.body.username)
       .then(() => {
         res.sendStatus(200);
       })
@@ -33,7 +33,7 @@ router.route('/user')
       });
   })
   .put((req, res) => {
-    usersController.updateUser(req, res)
+    usersController.updateUser(req.body)
       .then(() => {
         res.sendStatus(200);
       })
@@ -44,7 +44,7 @@ router.route('/user')
 
 router.route('/post')
   .post((req, res) => {
-    postsController.addPost(req, res)
+    postsController.addPost(req.body)
       .then(() => {
         res.sendStatus(200);
       })
@@ -53,7 +53,7 @@ router.route('/post')
       });
   })
   .get((req, res) => {
-    postsController.fetchPostInfo(req, res)
+    postsController.fetchPostInfo(req.query.id)
       .then((data) => {
         res.send(data);
       })
@@ -62,7 +62,7 @@ router.route('/post')
       });
   })
   .delete((req, res) => {
-    postsController.removePost(req, res)
+    postsController.removePost(req.body.id)
       .then(() => {
         res.sendStatus(200);
       })
@@ -71,7 +71,7 @@ router.route('/post')
       });
   })
   .put((req, res) => {
-    postsController.updatePost(req, res)
+    postsController.updatePost(req.body)
       .then(() => {
         res.sendStatus(200);
       })
@@ -82,7 +82,7 @@ router.route('/post')
 
 router.route('/like')
   .post((req, res) => {
-    likesController.addLike(req, res)
+    likesController.addLike(req.body)
       .then(() => {
         res.sendStatus(200);
       })
@@ -91,7 +91,7 @@ router.route('/like')
       });
   })
   .delete((req, res) => {
-    likesController.removeLike(req, res)
+    likesController.removeLike(req.body.id)
       .then(() => {
         res.sendStatus(200);
       })
@@ -102,9 +102,9 @@ router.route('/like')
 
 router.route('/follow')
   .post((req, res) => {
-    followingsFollowersController.addFollower(req, res)
+    followingsFollowersController.addFollower(req.body.follower)
       .then(() => {
-        followingsFollowersController.addFollowing(req, res)
+        followingsFollowersController.addFollowing(req.body.following)
           .then(() => {
             res.sendStatus(200);
           });
@@ -114,9 +114,9 @@ router.route('/follow')
       });
   })
   .get((req, res) => {
-    followingsFollowersController.fetchUserFollowers(req, res)
+    followingsFollowersController.fetchUserFollowers(req.query.username)
       .then((followers) => {
-        followingsFollowersController.fetchUserFollowings(req, res)
+        followingsFollowersController.fetchUserFollowings(req.query.username)
           .then((followings) => {
             let data = {
               follower: followers,
@@ -131,9 +131,9 @@ router.route('/follow')
       });
   })
   .remove((req, res) => {
-    followingsFollowersController.removeFollower(req, res)
+    followingsFollowersController.removeFollower(req.body)
       .then(() => {
-        followingsFollowersController.removeFollowing(req, res)
+        followingsFollowersController.removeFollowing(req.body)
           .then(() => {
             res.sendStatus(200);
           });
