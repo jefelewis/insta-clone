@@ -4,16 +4,16 @@ module.exports = {
   addUser: (req, res) => {
 
   },
-  updateUser: (req, res) => {
-
+  fetchUserInfo: (req, res) => {
+    
   },
   removeUser: (req, res) => {
 
   },
-  findUser: (req, res) => {
+  updateUser: (req, res) => {
 
   },
-  fetchUserInfo: (req, res) => {
-    
+  findUser: (req, res) => {
+
   }
 };

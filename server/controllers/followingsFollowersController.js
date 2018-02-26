@@ -4,19 +4,19 @@ module.exports = {
   addFollowing: (req, res) => {
 
   },
-  removeFollowing: (req, res) => {
+  fetchUserFollowings: (req, res) => {
 
   },
-  fetchUserFollowings: (req, res) => {
+  removeFollowing: (req, res) => {
 
   },
   addFollower: (req, res) => {
 
   },
-  removeFollower: (req, res) => {
+  fetchUserFollowers: (req, res) => {
 
   },
-  fetchUserFollowers: (req, res) => {
+  removeFollower: (req, res) => {
 
   }
 };

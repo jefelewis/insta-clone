@@ -4,13 +4,13 @@ module.exports = {
   addPost: (req, res) => {
 
   },
-  updatePost: (req, res) => {
-
+  fetchPostInfo: (req, res) => {
+    
   },
   removePost: (req, res) => {
 
   },
-  fetchPostInfo: (req, res) => {
-    
+  updatePost: (req, res) => {
+
   }
 };

@@ -11,6 +11,6 @@ app.use('/api', router);
 
 const port = 9001;
 
-app.listen(port, function() {
+app.listen(port, () => {
   console.log('Server has started on port: ' + port);
 });
