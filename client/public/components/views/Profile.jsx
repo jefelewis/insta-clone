@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProfileInfo from './profile/ProfileInfo.jsx';
-import ProfilePic from './profile/ProfilePic.jsx';
 
 //	There will be lots of sub components here
 //	path " import X from './profile/X.jsx' "
