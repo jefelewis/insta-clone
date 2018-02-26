@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack -w",
-    "start": "nodemon server/app.js",
+    "start": "nodemon server/index.js",
     "test": "jest --coverage --silent --forceExit"
   },
   "keywords": [],

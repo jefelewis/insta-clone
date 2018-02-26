@@ -1,28 +1,28 @@
 const Users = require('./db/postgresql/models/users.js');
 const Posts = require('./db/postgresql/models/posts.js');
 const Likes = require('./db/postgresql/models/likes.js');
-const FollowedFollowers = require('./db/postgresql/models/followedFollowers.js');
+const FollowingsFollowers = require('./db/postgresql/models/followingsFollowers.js');
 const usersData = require('../data/users.json');
 const postsData = require('../data/posts.json');
 const likesData = require('../data/likes.json');
-const followedFollowersData = require('../data/followedFollowers.json');
+const followingsFollowersData = require('../data/followingsFollowers.json');
 
-Users.destroy({ where: {} })
-  .then(() => {
-    Posts.destroy({ where: {} })
-      .then(() => {
-        Likes.destroy({ where: {} })
-          .then(() => {
-            FollowedFollowers.destroy({ where: {} })
-              .then(() => {
-                console.log('done');
-              })
-          })
-      })
-  })
-  .catch(() => {
-    console.log('error destroying data');
-  });
+// Users.destroy({ where: {} })
+//   .then(() => {
+//     Posts.destroy({ where: {} })
+//       .then(() => {
+//         Likes.destroy({ where: {} })
+//           .then(() => {
+//             FollowingsFollowers.destroy({ where: {} })
+//               .then(() => {
+//                 console.log('done');
+//               })
+//           })
+//       })
+//   })
+//   .catch(() => {
+//     console.log('error destroying data');
+//   });
 
 // Users.bulkCreate(usersData)
 //   .then(() => {
@@ -33,7 +33,7 @@ Users.destroy({ where: {} })
 //         Likes.bulkCreate(likesData)
 //           .then(() => {
 //             console.log('likes');
-//             FollowedFollowers.bulkCreate(followedFollowersData)
+//             FollowingsFollowers.bulkCreate(followingsFollowersData)
 //               .then(() => {
 //                 console.log('done writing data');
 //               });
@@ -74,12 +74,12 @@ Users.destroy({ where: {} })
 //     });
 // });
 
-// followedFollowersData.forEach((data, index) => {
-//   FollowedFollowers.create(data)
+// followingsFollowersData.forEach((data, index) => {
+//   FollowingsFollowers.create(data)
 //     .then(() => {
-//       console.log('followedFollower:', followedFollowersData.length - index);
+//       console.log('followingsFollower:', followingsFollowersData.length - index);
 //     })
 //     .catch(() => {
-//       console.log('error followedFollower:', followedFollowersData.length - index);
+//       console.log('error followingsFollower:', followingsFollowersData.length - index);
 //     });
 // });

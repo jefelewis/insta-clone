@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const API = require('../../../client/public/config.js');
+const API = require('../../client/public/config.js');
 const db = new Sequelize(API.elephantSqlUrl);
 
 db.authenticate()

@@ -1,16 +1,10 @@
 const path = require('path');
 const router = require('express').Router();
-// const mongooseController = require('./controllers/mongooseController.js');
-const postgresqlController = require('./controllers/postgresqlController.js');
+const usersController = require('./controllers/usersController.js');
+const postsController = require('./controllers/postsController.js');
+const likesController = require('./controllers/likesController.js');
+const followingsFollowersController = require('./controllers/followingsFollowersController.js');
 
-router.route('/')
-  .get((req, res) => {
-    res.sendFile(path.join(__dirname + '/../client/public/index.html'));
-  });
 
-router.route('/bundle.js')
-  .get((req, res) => {
-    res.sendFile(path.join(__dirname + '/../client/public/bundle.js'));
-  });
 
 module.exports = router;
