@@ -1,19 +1,26 @@
 const Users = require('../db/models/users.js');
+const Posts = require('../db/models/posts.js');
+const Likes = require('../db/models/likes.js');
+const FollowingsFollowers = require('../db/models/followingsFollowers.js');
 
 module.exports = {
-  addUser: (req, res) => {
-    return Users.create(req.body);
+  addUser: (user) => {
+    return Users.create(user);
   },
-  fetchUserInfo: (req, res) => {
-    
+  fetchUserInfo: (username) => {
+    return Users.findOne({ where: { username: username } });
   },
-  removeUser: (req, res) => {
-
+  removeUser: (username) => {
+    return Users.findOne({ where: { username: username } })
+      .then(({ user_id }) => {
+        Users.destroy({ where: { id: user_id } });
+        Posts.destroy({ where: { user_id: user_id } });
+        Likes.destroy({ where: { user_id: user_id } });
+        FollowingsFollowers.destroy({ where: { following_id: user_id } });
+        FollowingsFollowers.destroy({ where: { follower_id: user_id } });
+      });
   },
-  updateUser: (req, res) => {
-
-  },
-  findUser: (req, res) => {
-
+  updateUser: (username, data) => {
+    return Users.update(data, { where: { username: username } });
   }
 };
