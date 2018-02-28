@@ -16,12 +16,12 @@ class Add extends React.Component{
 } 
   fileUploadHandler = () => {
     const fd = new FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFil.name, fd, {
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name, fd, {
       onUploadProgress: progressEvent => {
         console.log('Upload Progress: ' + Math.round(progressEvent.loaded/ progressEvent.total * 100) + '%')
       }
     });
-    axios.post('URL TO FIREBASE')
+    axios.post('gs://top-shelf-708be.appspot.com/')
     .then(res=> {
       console.log(res);
     })
