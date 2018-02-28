@@ -3,7 +3,7 @@ const postsController = require('../controllers/postsController.js');
 
 router.route('/')
   .post((req, res) => {
-    postsController.addPost(req.body)
+    postsController.addPost(req.body.username, req.body.data)
       .then(() => {
         res.sendStatus(200);
       })
@@ -12,7 +12,7 @@ router.route('/')
       });
   })
   .get((req, res) => {
-    postsController.fetchUserPosts(req.query.id)
+    postsController.fetchUserPosts(req.query.username)
       .then((data) => {
         res.status(200).send(data);
       })

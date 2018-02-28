@@ -1,24 +1,20 @@
 [
   {
-    "id": 0,
     "username": "alex",
     "bio": "I am the best!",
     "profile_picture": "someUrl"
   },
   {
-    "id": 1,
     "username": "jake",
     "bio": "I am somewhat good.",
     "profile_picture": "someOtherUrl"
   },
   {
-    "id": 2,
     "username": "jeff",
     "bio": "I am ok I guess.",
     "profile_picture": "yetAnotherUrl"
   },
   {
-    "id": 3,
     "username": "daniel",
     "bio": "I pretty much just suck.",
     "profile_picture": "theShittiestUrlOfEmAll"

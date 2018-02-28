@@ -19,14 +19,17 @@ router.route('/')
       .then((followers) => {
         followingsFollowersController.fetchUserFollowers(req.query.username)
           .then((followings) => {
-            res.send({ followers: followers, followings: followings });
+            res.send({
+              followers: followers,
+              followings: followings
+            });
           });
       })
       .catch(() => {
         res.sendStatus(500);
-      })
+      });
   })
-  .remove((req, res) => {
+  .delete((req, res) => {
     followingsFollowersController.removeFollowing(req.body.following)
       .then(() => {
         followingsFollowersController.removeFollower(req.body.follower)

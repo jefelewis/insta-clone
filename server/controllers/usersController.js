@@ -12,12 +12,12 @@ module.exports = {
   },
   removeUser: (username) => {
     return Users.findOne({ where: { username: username } })
-      .then(({ user_id }) => {
-        Users.destroy({ where: { id: user_id } });
-        Posts.destroy({ where: { user_id: user_id } });
-        Likes.destroy({ where: { user_id: user_id } });
-        FollowingsFollowers.destroy({ where: { following_id: user_id } });
-        FollowingsFollowers.destroy({ where: { follower_id: user_id } });
+      .then(({ id }) => {
+        Users.destroy({ where: { id: id } });
+        Posts.destroy({ where: { user_id: id } });
+        Likes.destroy({ where: { user_id: id } });
+        FollowingsFollowers.destroy({ where: { following_id: id } });
+        FollowingsFollowers.destroy({ where: { follower_id: id } });
       });
   },
   updateUser: (username, data) => {
