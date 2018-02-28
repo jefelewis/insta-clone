@@ -1,14 +1,14 @@
 const functions = require('firebase-functions');
 const os = require('os');
-const cors = require('cors')({origin:true});
 const path = require('path');
+const spawn = require('child-process-promise').spawn;
+const cors = require('cors')({origin:true});
 const Busboy = require('busboy');
 const fs = require('fs');
-const spawn = require('child-process-promise').spawn;
 
 const gcconfig = {     
   projectId: 'top-shelf-708be',
-  keyFilename: 'top-shelf-708be-firebase-adminsdk-gi7rg-966f7e4f84.json'
+  keyFilename: 'top-shelf-708be-firebase-adminsdk-gi7rg-eaad29cef2.json'
 };
 
 const gcs = require('@google-cloud/storage')(gcconfig);
@@ -32,23 +32,28 @@ exports.onFileChange = functions.storage.object().onChange(event => {
 
   const destBucket = gcs.bucket(bucket);
   const tmpFilePath = path.join(os.tmpdir(), path.basename(filePath));
-  const metadata = { contentType: contentType};
+  const metadata = { contentType: contentType };
 
   return destBucket.file(filePath).download({
     destination: tmpFilePath
 }).then(() => {
-  return spawn('convert', [tmpFilePath, '-resize', '250x250', tmpFilePath]);
+  return spawn('convert', [tmpFilePath, '-resize', '100x100', tmpFilePath]);
 }).then(() => {
   return destBucket.upload(tmpFilePath, {
     destination: 'resized-' + path.basename(filePath),
     metadata: metadata
-  })
+  });
 });
 });
+
+
+
+
 //upload file to http endpoint
 exports.uploadFile = functions.https.onRequest((req, res) => {
   //check request method, mobile app cors taken care of
   cors(req, res, () => {
+    console.log('entering http post logic');
   if (req.method !== 'POST') {
     return res.status(500).json({
       message: 'Not allowed'
@@ -59,12 +64,15 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
   let uploadData = null;
 //once parsed, handle it
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+    console.log('entering busboy logic');
     const filepath = path.join(os.tmpdir(), filename);
-    uploadData = {file: filepath, type:minetype}; 
+    uploadData = { file: filepath, type: mimetype }; 
     file.pipe(fs.createWriteStream(filepath));
   });
+  
   busboy.on('finish', () => {
-    const bucket = gcs.bucket('gs://top-shelf-708be.appspot.com/'); 
+    console.log('entering busboy finish logic');
+    const bucket = gcs.bucket('top-shelf-708be.appspot.com'); 
     bucket.upload(uploadData.file, {
       uploadType: 'media',
       metadata: {
@@ -74,17 +82,18 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
       } 
     })
     .then(() => {
-      res.status(200).json({
+      console.log('entering then logic');
+      return res.status(200).json({
         message: 'It worked!'
       });
-      return busboy.end(req.rawBody);
     })
     .catch(err => {
+      console.log('entering catch post logic');
       res.status(500).json({
         error: err
       });
     });
   });
-  //on end
+  busboy.end(req.rawBody);
   });
 });
