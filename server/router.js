@@ -9,6 +9,4 @@ router.use('/post', postsRouter);
 router.use('like', likesRouter);
 router.use('follow', followingsFollowersRouter);
 
-
-
 module.exports = router;
