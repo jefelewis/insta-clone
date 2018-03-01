@@ -1,32 +1,43 @@
 // Requirements: React
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Requirements: Enzyme
-import {shallow, mount, render}  from 'enzyme';
+import {mount, shallow} from 'enzyme'
 
 // Requirements: Components
-import App from '../client/public/App.jsx';
-import Banner from '../client/public/components/Banner.jsx';
-import View from '../client/public/components/View.jsx';
+import { App } from '../client/public/App.jsx';
+// import { Banner } from '../client/public/components/Banner.jsx';
+// import { View } from '../client/public/components/View.jsx';
+// import { Postlist } from '../client/public/components/views/Postlist.jsx';
 
 
 // Tests: App Component
 describe('<App />', () => {
 
+  it('Should render correctly', () => {
+    let component = shallow(<App />);
+    expect(component).toHaveLength(1);
+  });
+
   it('Should have the default state as active', () => {
+    let component = shallow(< App/>);
 
   });  
 
   it('Should include the Banner component', () => {
-
+    let component = shallow(<App />);
+    expect(component.contains('Banner').toBe(true));
   });
 
   it('Should include the View component', () => {
-
+    let component = shallow(<App />);
+    expect(component.contains('View').toBe(true));
   });
 
   it('Should include the Postlist component', () => {
-
+    let component = shallow(<App />);
+    expect(component.contains('Postlist').toBe(true));
   });
 });
 
@@ -35,15 +46,18 @@ describe('<App />', () => {
 describe('<Banner />', () => {
 
   it('Should include the TopshelfPic component', () => {
-
+    let component = shallow(Banner);
+    expect(component.contains('TopshelfPic').toBe(true));
   });
 
   it('Should include the Search component', () => {
-
+    let component = shallow(Banner);
+    expect(component.contains('Search').toBe(true));
   });
 
   it('Should include the Detail component', () => {
-
+    let component = shallow(Banner);
+    expect(component.contains('Detail').toBe(true));
   });
 });
 
@@ -51,8 +65,8 @@ describe('<Banner />', () => {
 // Tests: TopshelfPic Component
 describe('<TopshelfPic />', () => {
 
-  it('Should include the image tag', () => {
-
+  it('Should include the image with the correct path', () => {
+    expect(component.find('img').attr('src')).toEqual(IMAGE_PATH); 
   });
 
   it('Should render the logo image', () => {

@@ -11,6 +11,8 @@ before_install:
 before_script:
   - sleep 10
 script:
+  - npm install
+  - sleep 10
   - npm start
   - sleep 10
   - npm run dev
