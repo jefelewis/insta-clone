@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -w",
     "start": "nodemon server/index.js",
+    "dev": "webpack -w",
+    "db": "node server/db/index.js",
     "test": "jest --coverage --silent --forceExit"
   },
   "keywords": [],
