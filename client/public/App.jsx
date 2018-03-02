@@ -5,6 +5,7 @@ import API from './config.js';
 import Login from './components/views/Login.jsx';
 import Profile from './components/views/Profile.jsx';
 import firebase from 'firebase';
+import Add from '../public/components/views/profile/Add.jsx';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -68,7 +69,7 @@ class App extends Component {
         <div>
           <Banner active={this.state.active} click={this.onClickHandler} />
           <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active}/>
-          {/* <Switch>
+           <Switch> 
             <Route path="/main" component={View} />
             <Route  path="/login"
               render={props => (
@@ -78,7 +79,8 @@ class App extends Component {
                 />
               )}
             />
-          </Switch> */}
+          </Switch> 
+          <Add />
         </div>
       </Router>
     );
