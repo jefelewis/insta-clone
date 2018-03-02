@@ -1,4 +1,5 @@
 const Posts = require('../db/models/posts.js');
+const Likes = require('../db/models/likes.js');
 
 module.exports = {
   findComments: async (parentId) => {
@@ -18,6 +19,7 @@ module.exports = {
       let comments = await Posts.findAll({ where: { parent_id: parentId } });
       await comments.forEach(async (comment) => {
         await module.exports.removeComments(comment.id);
+        await Likes.destroy({ where: { post_id: comment.id } });
         await Posts.destroy({ where: { id: comment.id } });
       });
     } catch (err) {

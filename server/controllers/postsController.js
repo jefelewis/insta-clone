@@ -1,5 +1,6 @@
 const Posts = require('../db/models/posts.js');
 const Users = require('../db/models/users.js');
+const Likes = require('../db/models/likes.js');
 const util = require('../helpers/util.js');
 
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
   removePost: async (id) => {
     try {
       await util.removeComments(id);
+      await Likes.destroy({ where: { post_id: id } });
       await Posts.destroy({ where: { id: id } });
     } catch (err) {
       throw err;

@@ -7,23 +7,6 @@ const postsData = require('../data/posts.json');
 const likesData = require('../data/likes.json');
 const followingsFollowersData = require('../data/followingsFollowers.json');
 
-Users.destroy({ where: {} })
-  .then(() => {
-    Posts.destroy({ where: {} })
-      .then(() => {
-        Likes.destroy({ where: {} })
-          .then(() => {
-            FollowingsFollowers.destroy({ where: {} })
-              .then(() => {
-                console.log('done');
-              });
-          });
-      });
-  })
-  .catch(() => {
-    console.log('error destroying data');
-  });
-
 Users.bulkCreate(usersData)
   .then(() => {
     console.log('done writing users data');
