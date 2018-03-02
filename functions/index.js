@@ -53,7 +53,7 @@ exports.onFileChange = functions.storage.object().onChange(event => {
 exports.uploadFile = functions.https.onRequest((req, res) => {
   //check request method, mobile app cors taken care of
   cors(req, res, () => {
-    console.log('entering http post logic');
+    console.log('entering http post logic, req is :', req);
   if (req.method !== 'POST') {
     return res.status(500).json({
       message: 'Not allowed'

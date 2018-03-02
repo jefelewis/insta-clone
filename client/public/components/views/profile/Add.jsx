@@ -1,4 +1,4 @@
-import Add from 'react';
+import react from 'react';
 import axios from 'axios';
 
 class Add extends React.Component{
@@ -21,7 +21,7 @@ class Add extends React.Component{
         console.log('Upload Progress: ' + Math.round(progressEvent.loaded/ progressEvent.total * 100) + '%')
       }
     });
-    axios.post('gs://top-shelf-708be.appspot.com/')
+    axios.post('https://us-central1-top-shelf-708be.cloudfunctions.net/uploadFile')
     .then(res=> {
       console.log(res);
     })
