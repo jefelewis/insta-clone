@@ -3,17 +3,14 @@ const Users = require('../db/models/users.js');
 const util = require('../helpers/util.js');
 
 module.exports = {
-  addPost: (username, post) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let user = await Users.findOne({ where: { username: username } });
-        post.user_id = user.id;
-        await Posts.create(post);
-        resolve();
-      } catch (err) {
-        reject(err);
-      }
-    });
+  addPost: async (username, post) => {
+    try {
+      let user = await Users.findOne({ where: { username: username } });
+      post.user_id = user.id;
+      await Posts.create(post);
+    } catch (err) {
+      throw err;
+    }
   },
   fetchUserPosts: async (username) => {
     try {
@@ -30,9 +27,13 @@ module.exports = {
       return err;
     }
   },
-  removePost: (id) => {
-    util.removeComments(id);
-    return Posts.destroy({ where: { id: id } });
+  removePost: async (id) => {
+    try {
+      await util.removeComments(id);
+      await Posts.destroy({ where: { id: id } });
+    } catch (err) {
+      throw err;
+    }
   },
   updatePost: (id, data) => {
     return Posts.update(data, { where: { id: id } });

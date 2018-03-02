@@ -20,7 +20,6 @@ router.route('/')
   })
   .delete(async (req, res) => {
     try {
-      console.log(req.body);
       await usersController.removeUser(req.body.username);
       res.sendStatus(200);
     } catch (err) {

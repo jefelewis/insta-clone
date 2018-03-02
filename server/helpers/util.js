@@ -13,13 +13,15 @@ module.exports = {
       return err;
     }
   },
-  removeComments: (parentId) => {
-    Posts.findAll({ parent_id: parentId })
-    .then((comments) => {
-      comments.forEach((comment) => {
-        module.exports.removeComments(comment.id);
-        Posts.destroy({ where: { id: comment.id} });
+  removeComments: async (parentId) => {
+    try {
+      let comments = await Posts.findAll({ where: { parent_id: parentId } });
+      await comments.forEach(async (comment) => {
+        await module.exports.removeComments(comment.id);
+        await Posts.destroy({ where: { id: comment.id } });
       });
-    });
+    } catch (err) {
+      throw err;
+    }
   }
 };
