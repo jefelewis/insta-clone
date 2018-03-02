@@ -4,42 +4,31 @@ const util = require('../helpers/util.js');
 
 module.exports = {
   addPost: (username, post) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: username } })
-        .then((user) => {
-          post.user_id = user.id;
-          Posts.create(post)
-            .then((created) => {
-              resolve();
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
+    return new Promise(async (resolve, reject) => {
+      try {
+        let user = await Users.findOne({ where: { username: username } });
+        post.user_id = user.id;
+        await Posts.create(post);
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
     });
   },
-  fetchUserPosts: (username) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: username } })
-        .then((user) => {
-          Posts.findAll({ where: { user_id: user.id, type: 0 } })
-            .then((photos) => {
-              Posts.findAll({ where: { user_id: user.id, type: 1 } })
-                .then((videos) => {
-                  resolve(photos.concat(videos)
-                    .map((post) => {
-                      post.comments = util.findComments(post.id)
-                        .then(() => {
-                          return post;
-                        });
-                    }));
-                });
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  fetchUserPosts: async (username) => {
+    try {
+      let user = await Users.findOne({ where: { username: username } });
+      let photos = await Posts.findAll({ where: { user_id: user.id, type: 0 } });
+      let videos = await Posts.findAll({ where: { user_id: user.id, type: 1 } });
+
+      return photos.concat(videos).map(async (post) => {
+        post.dataValues.comments = await util.findComments(post.id);
+        console.log(post.dataValues);
+        return post.dataValues;
+      });
+    } catch (err) {
+      return err;
+    }
   },
   removePost: (id) => {
     util.removeComments(id);
