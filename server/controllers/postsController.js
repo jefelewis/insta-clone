@@ -7,12 +7,9 @@ module.exports = {
     return new Promise((resolve, reject) => {
       Users.findOne({ where: { username: username } })
         .then((user) => {
-          console.log('user:', user);
           post.user_id = user.id;
-          console.log('post:', post);
           Posts.create(post)
             .then((created) => {
-              console.log('created:', created);
               resolve();
             });
         })

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Users = require('./users.js');
 const db = require('../db.js');
 
 const Posts = db.define('posts', {
@@ -9,5 +10,8 @@ const Posts = db.define('posts', {
     defaultValue: 0
   }
 });
+
+Posts.belongsTo(Users, { foreignKey: 'user_id' });
+Posts.belongsTo(Posts, { foreignKey: 'parent_id' });
 
 module.exports = Posts;
