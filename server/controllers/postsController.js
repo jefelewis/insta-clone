@@ -15,17 +15,20 @@ module.exports = {
   },
   fetchUserPosts: async (username) => {
     try {
+      let data = [];
       let user = await Users.findOne({ where: { username: username } });
       let photos = await Posts.findAll({ where: { user_id: user.id, type: 0 } });
       let videos = await Posts.findAll({ where: { user_id: user.id, type: 1 } });
-
-      return photos.concat(videos).map(async (post) => {
-        post.dataValues.comments = await util.findComments(post.id);
-        console.log(post.dataValues);
-        return post.dataValues;
-      });
+      let posts = photos.concat(videos);
+      
+      for (let i = 0; i < posts.length; i++) {
+        posts[i].dataValues.comments = await util.findCommentsOfPost(posts[i].id);
+        data.push(posts[i].dataValues);
+      }
+      
+      return data;
     } catch (err) {
-      return err;
+      throw err;
     }
   },
   removePost: async (id) => {

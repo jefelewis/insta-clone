@@ -2,23 +2,27 @@ const Posts = require('../db/models/posts.js');
 const Likes = require('../db/models/likes.js');
 
 module.exports = {
-  findComments: async (parentId) => {
+  findCommentsOfPost: async (parentId) => {
     try {
       let comments = await Posts.findAll({ where: { parent_id: parentId } });
+      let comms = [];
 
-      return comments.map(async (comment) => {
-        comment.dataValues.comments = await module.exports.findComments(comment.id);
-        return comment.dataValues;
-      });
+      for (let i = 0; i < comments.length; i++) {
+        comments[i].dataValues.comments = await module.exports.findCommentsOfPost(comments[i].id);
+        comms.push(comments[i].dataValues);
+      }
+      
+      return comms;
     } catch (err) {
-      return err;
+      throw err;
     }
   },
   removeComments: async (parentId) => {
     try {
       let comments = await Posts.findAll({ where: { parent_id: parentId } });
-      await comments.forEach(async (comment) => {
-        await module.exports.removeComments(comment.id);
+      
+      comments.forEach(async (comment) => {
+        module.exports.removeComments(comment.id);
         await Likes.destroy({ where: { post_id: comment.id } });
         await Posts.destroy({ where: { id: comment.id } });
       });
