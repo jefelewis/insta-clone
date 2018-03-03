@@ -1,37 +1,40 @@
-import Add from 'react';
+import React from 'react';
 import axios from 'axios';
-
 class Add extends React.Component{
   constructor(props){
     super(props);
-    state = {
+    this.state = {
       selectedFile: null
     }
+    this.fileUploadHandler = this.fileUploadHandler.bind(this);
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
   }
-
-  fileSelectedHandler = event => {
+  fileSelectedHandler(e) {
+    console.log('fileselectedhandler: ', e.target.files[0])
     this.setState({
-      selectedFile: event.target.files[0]
+      selectedFile: e.target.files[0]
   })
 } 
-  fileUploadHandler = () => {
+  fileUploadHandler(e) {
     const fd = new FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name, fd, {
+    console.log('fileupdloadhandler: ', fd)
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    axios.post('https://us-central1-top-shelf-708be.cloudfunctions.net/uploadFile', fd, {
       onUploadProgress: progressEvent => {
-        console.log('Upload Progress: ' + Math.round(progressEvent.loaded/ progressEvent.total * 100) + '%')
+        console.log('Upload progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
       }
-    });
-    axios.post('gs://top-shelf-708be.appspot.com/')
-    .then(res=> {
-      console.log(res);
     })
+      .then(res => {
+        console.log(res);
+      });
+    
+    
   }
-
   render() {
     return (
       <div>
         <input 
-          style={{display: 'none'}} 
+          style={{display: 'none'}} //remove this style to display selected file name
           type="file" 
           onChange={this.fileSelectedHandler} 
           ref={fileInput => this.fileInput = fileInput} />
@@ -40,7 +43,5 @@ class Add extends React.Component{
       </div>
     );
   }
-
-
 }
 export default Add;

@@ -1,3 +1,4 @@
+import Add from '../public/components/views/profile/Add.jsx';
 import React, { Component } from 'react';
 import Banner from './components/Banner.jsx';
 import View from './components/View.jsx';
@@ -68,17 +69,6 @@ class App extends Component {
         <div>
           <Banner active={this.state.active} click={this.onClickHandler} />
           <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active}/>
-          {/* <Switch>
-            <Route path="/main" component={View} />
-            <Route  path="/login"
-              render={props => (
-                <Login
-                  change={this.onChangeHandler}
-                  click={this.onClickHandler}
-                />
-              )}
-            />
-          </Switch> */}
         </div>
       </Router>
     );
