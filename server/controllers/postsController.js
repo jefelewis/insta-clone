@@ -40,7 +40,13 @@ module.exports = {
       throw err;
     }
   },
-  updatePost: (id, data) => {
-    return Posts.update(data, { where: { id: id } });
+  updatePost: async (id, data) => {
+    let post = await Posts.findOne({ where: { id: id } });
+    
+    if (post) {
+      await Posts.update(data, { where: { id: id } });
+    } else {
+      throw null;
+    }
   }
 };
