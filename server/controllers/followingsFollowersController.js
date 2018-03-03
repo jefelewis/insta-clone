@@ -27,20 +27,32 @@ module.exports = {
   },
   fetchUserFollowings: async (username) => {
     try {
+      let data = [];
       let { id } = await Users.findOne({ where: { username: username } });
-      let followings = await FollowingsFollowers.findAll({ where: { following_id: id } });
+      let followings = await FollowingsFollowers.findAll({ where: { follower_id: id } });
       
-      return followings;
+      for (let i = 0; i < followings.length; i++) {
+        let { dataValues } = await Users.findOne({ where: { id: followings[i].following_id } });
+        data.push(dataValues);
+      }
+      
+      return data;
     } catch (err) {
       throw err;
     }
   },
   fetchUserFollowers: async (username) => {
     try {
+      let data = [];
       let { id } = await Users.findOne({ where: { username: username } });
-      let followers = await FollowingsFollowers.findAll({ where: { follower_id: id } });
+      let followers = await FollowingsFollowers.findAll({ where: { following_id: id } });
       
-      return followers;
+      for (let i = 0; i < followers.length; i++) {
+        let { dataValues } = await Users.findOne({ where: { id: followers[i].follower_id } });
+        data.push(dataValues);
+      }
+
+      return data;
     } catch (err) {
       throw err;
     }

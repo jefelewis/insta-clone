@@ -9,20 +9,17 @@ const followingsFollowersData = require('../data/followingsFollowers.json');
 
 Users.bulkCreate(usersData)
   .then(() => {
-    console.log('done writing users data');
     Posts.bulkCreate(postsData)
       .then(() => {
-        console.log('done writing posts data');
         Likes.bulkCreate(likesData)
           .then(() => {
-            console.log('done writing likes data');
             FollowingsFollowers.bulkCreate(followingsFollowersData)
               .then(() => {
-                console.log('done writing all data');
+                console.log('done inserting data');
               });
           });
       });
   })
-  .catch(() => {
-    console.log('error writing data');
+  .catch((err) => {
+    throw err;
   });

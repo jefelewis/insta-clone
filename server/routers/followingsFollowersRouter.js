@@ -12,12 +12,12 @@ router.route('/')
   })
   .get(async (req, res) => {
     try {
-      let followers = await followingsFollowersController.fetchUserFollowings(req.query.username);
-      let followings = await followingsFollowersController.fetchUserFollowers(req.query.username);
+      let followings = await followingsFollowersController.fetchUserFollowings(req.query.username);
+      let followers = await followingsFollowersController.fetchUserFollowers(req.query.username);
       
       res.send({
-        followers: followers,
-        followings: followings
+        followings: followings,
+        followers: followers
       });  
     } catch (err) {
       res.sendStatus(500);

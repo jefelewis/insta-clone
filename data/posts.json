@@ -1,15 +1,15 @@
 [
   {
     "type": 0,
-    "body": "someImgUrl",
+    "body": "https://scontent-yyz1-1.cdninstagram.com/vp/5b742bb7a60d011a1a1068869bf54492/5B042315/t51.2885-19/s150x150/21107568_1942193492720343_5520347931137277952_a.jpg",
     "likesCount": 3,
     "user_id": 1
   },
   {
     "type": 2,
-    "body": "wow you are so handsome! <3",
+    "body": "Nice pic dude!",
     "likesCount": 0,
-    "user_id": 4,
+    "user_id": 2,
     "parent_id": 1
   },
   {
@@ -20,16 +20,30 @@
   },
   {
     "type": 2,
-    "body": "@daniel wait what?",
+    "body": "I thought so too!",
     "likesCount": 1,
     "user_id": 3,
     "parent_id": 2
   },
   {
     "type": 2,
-    "body": "@jeff i know right, not replying to that",
+    "body": "Cool pic!",
     "likesCount": 2,
-    "user_id": 2,
+    "user_id": 4,
     "parent_id": 1
+  },
+  {
+    "type": 2,
+    "body": "Thanks guys!",
+    "likesCount": 0,
+    "user_id": 1,
+    "parent_id": 4
+  },
+  {
+    "type": 2,
+    "body": "You're welcome.",
+    "likesCount": 0,
+    "user_id": 2,
+    "parent_id": 4
   }
 ]
