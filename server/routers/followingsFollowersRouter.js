@@ -4,8 +4,7 @@ const followingsFollowersController = require('../controllers/followingsFollower
 router.route('/')
   .post(async (req, res) => {
     try {
-      await followingsFollowersController.addFollowing(req.body.following);
-      await followingsFollowersController.addFollower(req.body.follower);
+      await followingsFollowersController.addFollowingFollower(req.body);
       res.sendStatus(200);
     } catch (err) {
       res.sendStatus(500);
@@ -26,8 +25,7 @@ router.route('/')
   })
   .delete(async (req, res) => {
     try {
-      await followingsFollowersController.removeFollowing(req.body.following);
-      await followingsFollowersController.removeFollower(req.body.follower);
+      await followingsFollowersController.removeFollowingFollower(req.body);
       res.sendStatus(200);
     } catch (err) {
       res.sendStatus(500);

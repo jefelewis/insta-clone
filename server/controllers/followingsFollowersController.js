@@ -2,74 +2,66 @@ const FollowingsFollowers = require('../db/models/followingsFollowers.js');
 const Users = require('../db/models/users.js');
 
 module.exports = {
-  addFollowingFollower: (following, follower) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: following } })
-        .then((followingUser) => {
-          Users.findOne({ where: { username: follower } })
-            .then((followerUser) => {
-              FollowingsFollowers.create({
-                following_id: followingUser.id,
-                follower_id: followerUser.id
-              })
-                .then(() => {
-                  resolve();
-                });
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  addFollowingFollower: async ({ following, follower }) => {
+    try {
+      let followingUser = await Users.findOne({ where: { username: following } })
+      let followerUser = await Users.findOne({ where: { username: follower } })
+      
+      if (followingUser.id === followerUser.id) {
+        throw null;
+      }
+      
+      let [ data, created ] = await FollowingsFollowers.findOrCreate({
+        where: {
+          following_id: followingUser.id,
+          follower_id: followerUser.id
+        }
+      });
+      
+      if (!created) {
+        throw null;
+      }
+    } catch (err) {
+      throw err;
+    }
   },
-  fetchUserFollowings: (username) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: username } })
-        .then(({ id }) => {
-          FollowingsFollowers.findAll({ where: { following_id: id } })
-            .then((followings) => {
-              resolve(followings);
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  fetchUserFollowings: async (username) => {
+    try {
+      let { id } = await Users.findOne({ where: { username: username } });
+      let followings = await FollowingsFollowers.findAll({ where: { following_id: id } });
+      
+      return followings;
+    } catch (err) {
+      throw err;
+    }
   },
-  fetchUserFollowers: (username) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: username } })
-        .then(({ id }) => {
-          FollowingsFollowers.findAll({ where: { follower_id: id } })
-            .then((followers) => {
-              resolve(followers);
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  fetchUserFollowers: async (username) => {
+    try {
+      let { id } = await Users.findOne({ where: { username: username } });
+      let followers = await FollowingsFollowers.findAll({ where: { follower_id: id } });
+      
+      return followers;
+    } catch (err) {
+      throw err;
+    }
   },
-  removeFollowingFollower: (following, follower) => {
-    return new Promise((resolve, reject) => {
-      Users.findOne({ where: { username: following } })
-        .then((followingUser) => {
-          Users.findOne({ where: { username: follower } })
-            .then((followerUser) => {
-              FollowingsFollowers.destroy({
-                where: {
-                  following_id: followingUserId,
-                  follower_id: followerUserId
-                }
-              })
-                .then(() => {
-                  resolve();
-                });
-            });
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  removeFollowingFollower: async ({ following, follower }) => {
+    try {
+      let followingUser = await Users.findOne({ where: { username: following } });
+      let followerUser = await Users.findOne({ where: { username: follower } });
+      
+      let destroyed = await FollowingsFollowers.destroy({
+        where: {
+          following_id: followingUser.id,
+          follower_id: followerUser.id
+        }
+      });
+
+      if (!destroyed) {
+        throw null;
+      }
+    } catch (err) {
+      throw err;
+    }
   },
 };
