@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server/index.js",
     "dev": "webpack -w",
-    "start": "nodemon server/app.js",
+    "db": "node server/db/index.js",
     "test": "jest --coverage --silent --forceExit"
   },
   "keywords": [],
@@ -42,6 +43,7 @@
     "react-dropzone": "^4.2.8",
     "react-router-dom": "^4.2.2",
     "sequelize": "^4.35.0",
+    "redux": "^3.7.2",
     "webpack": "^3.11.0"
   }
 }

@@ -1,16 +1,35 @@
-const path = require('path');
 const router = require('express').Router();
-// const mongooseController = require('./controllers/mongooseController.js');
-const postgresqlController = require('./controllers/postgresqlController.js');
+const usersRouter = require('./routers/usersRouter.js');
+const postsRouter = require('./routers/postsRouter.js');
+const likesRouter = require('./routers/likesRouter.js');
+const followingsFollowersRouter = require('./routers/followingsFollowersRouter.js');
+const Users = require('./db/models/users.js');
+const followingsFollowersController = require('./controllers/followingsFollowersController.js');
 
-router.route('/')
-  .get((req, res) => {
-    res.sendFile(path.join(__dirname + '/../client/public/index.html'));
-  });
+router.use('/user', usersRouter);
+router.use('/post', postsRouter);
+router.use('/like', likesRouter);
+router.use('/follow', followingsFollowersRouter);
 
-router.route('/bundle.js')
-  .get((req, res) => {
-    res.sendFile(path.join(__dirname + '/../client/public/bundle.js'));
-  });
+router.get('/users', async (req, res) => {
+  try {
+    let users = await Users.findAll();
+    console.log('users:', users);
+    res.send(users);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+});
+
+router.get('/following', async (req, res) => {
+  try {
+    console.log(req.query);
+    let followings = await followingsFollowersController.fetchUserFollowings(req.query.username);
+    console.log('followings:', followings);
+    res.send(followings);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;

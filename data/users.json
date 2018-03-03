@@ -1,26 +1,22 @@
 [
   {
-    "id": 0,
-    "username": "alex",
-    "bio": "I am the best!",
-    "profile_picture": "someUrl"
+    "username": "alex@topshelf.com",
+    "bio": "Ali G in da house!",
+    "profile_picture": "https://scontent-yyz1-1.cdninstagram.com/vp/5b742bb7a60d011a1a1068869bf54492/5B042315/t51.2885-19/s150x150/21107568_1942193492720343_5520347931137277952_a.jpg"
   },
   {
-    "id": 1,
-    "username": "jake",
-    "bio": "I am somewhat good.",
-    "profile_picture": "someOtherUrl"
+    "username": "daniel@topshelf.com",
+    "bio": "Dan the Dan man!",
+    "profile_picture": "https://media-exp2.licdn.com/mpr/mpr/shrinknp_200_200/p/7/005/06c/2a7/0814645.jpg"
   },
   {
-    "id": 2,
-    "username": "jeff",
-    "bio": "I am ok I guess.",
-    "profile_picture": "yetAnotherUrl"
+    "username": "jake@topshelf.com",
+    "bio": "Jakey Jake Jake!",
+    "profile_picture": "cantFindAPicOfJakeLeavellOnGoogle"
   },
   {
-    "id": 3,
-    "username": "daniel",
-    "bio": "I pretty much just suck.",
-    "profile_picture": "theShittiestUrlOfEmAll"
+    "username": "jeff@topshelf.com",
+    "bio": "Jeff on Jeff!",
+    "profile_picture": "tooManyJeffLewissOnGoogle"
   }
 ]
