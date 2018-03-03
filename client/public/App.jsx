@@ -122,6 +122,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
           <div className="space"></div>
           <View
@@ -133,8 +134,11 @@ class App extends Component {
             render={this.state.render}
             userClickHandler={this.userClickHandler}
             email={this.state.email}
-          /> 
-
+          />
+          <Add email={this.state.email} firebase={firebase} />
+          <Banner active={this.state.active} click={this.onClickHandler} />
+          <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active}/>
+          <Add />
         </div>
       </Router>
     );
