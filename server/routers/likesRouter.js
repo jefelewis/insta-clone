@@ -4,6 +4,7 @@ const likesController = require('../controllers/likesController.js');
 router.route('/')
   .post(async (req, res) => {
     try {
+      console.log(req.body);
       await likesController.addLike(req.body);
       res.sendStatus(200);
     } catch (err) {

@@ -6,7 +6,7 @@ const followingsFollowersRouter = require('./routers/followingsFollowersRouter.j
 
 router.use('/user', usersRouter);
 router.use('/post', postsRouter);
-router.use('like', likesRouter);
-router.use('follow', followingsFollowersRouter);
+router.use('/like', likesRouter);
+router.use('/follow', followingsFollowersRouter);
 
 module.exports = router;
