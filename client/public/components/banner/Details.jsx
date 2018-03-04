@@ -19,7 +19,7 @@ class Details extends Component {
             <div className="col-md-7"></div>
             <div className="col-md-5">
               <button><Link to="/"> Home </Link></button><br />
-              <button><Link to="/user"> User </Link></button><br />
+              <button onClick={this.props.profileClickHandler}><Link to="/user"> User </Link></button><br />
               { !this.props.active ? null : <button name="logout" onClick={this.props.click}>Logout</button> }
             </div>
           </div>

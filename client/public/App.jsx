@@ -6,7 +6,8 @@ import API from './config.js';
 import Login from './components/views/Login.jsx';
 import Profile from './components/views/Profile.jsx';
 import firebase from 'firebase';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -63,6 +64,17 @@ class App extends Component {
       errHandler.catch((e) => console.log(e.message));
     } else if (e.target.name === 'create') {
       const errHandler = firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+      axios.post('/api/user', {
+        username: this.state.email,
+        bio: 'Enter your bio here.',
+        profile_picture: 'https://rapidapi.com/assets/images/unknown_user.png'
+      })
+        .then(() => {
+          console.log('success');
+        })
+        .catch(() => {
+          console.log('error');
+        });
       errHandler.catch((e) => console.log(e.message));
     } else if (e.target.name === 'logout') {
       const errHandler = firebase.auth().signOut();

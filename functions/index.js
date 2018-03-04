@@ -40,7 +40,7 @@ exports.onFileChange = functions.storage.object().onChange(event => {
       destination: tmpFilePath
     })
     .then(() => {
-      return spawn("convert", [tmpFilePath, "-resize", "600x600", tmpFilePath]);
+      return spawn("convert", [tmpFilePath, "-resize", "300x300", tmpFilePath]);
     }).catch((error) =>{
       console.error(error);
     })
