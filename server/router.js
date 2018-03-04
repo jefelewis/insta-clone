@@ -14,7 +14,6 @@ router.use('/follow', followingsFollowersRouter);
 router.get('/users', async (req, res) => {
   try {
     let users = await Users.findAll();
-    console.log('users:', users);
     res.send(users);
   } catch (err) {
     res.sendStatus(500);
@@ -23,9 +22,7 @@ router.get('/users', async (req, res) => {
 
 router.get('/following', async (req, res) => {
   try {
-    console.log(req.query);
     let followings = await followingsFollowersController.fetchUserFollowings(req.query.username);
-    console.log('followings:', followings);
     res.send(followings);
   } catch (err) {
     res.sendStatus(500);

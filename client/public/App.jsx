@@ -76,6 +76,7 @@ class App extends Component {
         <div>
           <Banner active={this.state.active} click={this.onClickHandler} />
           <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active} />
+          <Add email={this.state.email} firebase={firebase} />
         </div>
       </Router>
     );

@@ -13,7 +13,6 @@ router.route('/')
   .get(async (req, res) => {
     try {
       let data = await postsController.fetchUserPosts(req.query.username);
-      console.log('sending');
       res.send(data);
     } catch (err) {
       res.sendStatus(500);

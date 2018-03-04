@@ -18,21 +18,21 @@ exports.onFileChange = functions.storage.object().onChange(event => {
   const bucket = object.bucket;
   const contentType = object.contentType;
   const filePath = object.name;
+  const destBucket = gcs.bucket(bucket);
+  const tmpFilePath = path.join(os.tmpdir(), path.basename(filePath));
+  const metadata = { contentType: contentType };
   // console.log('event is ', event)
   console.log("File change detected, starting function");
 
-  if (object.resourceState === "not_exists") {
-    console.log("we deleted a file, exit...");
-    return;
-  }
+  // if (object.resourceState === "not_exists") {
+  //   console.log("we deleted a file, exit...");
+  //   return;
+  // }
   if (path.basename(filePath).startsWith("resized-")) {
     console.log("we already renamed this file!");
     return;
   }
 
-  const destBucket = gcs.bucket(bucket);
-  const tmpFilePath = path.join(os.tmpdir(), path.basename(filePath));
-  const metadata = { contentType: contentType };
 
   return destBucket
     .file(filePath)
