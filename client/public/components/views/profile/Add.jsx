@@ -23,22 +23,30 @@ class Add extends React.Component {
   }
 
   fileUploadHandler(e) {
-    console.log(this.props);
     axios.post('/api/post', { username: this.props.email, data: { type: 0 } })
       .then(() => {
         axios.get('/api/post', { params: { username: this.props.email } })
           .then((posts) => {
             const fd = new FormData();
-            fd.append('image', this.state.selectedFile, posts.data[posts.data.length - 1].id + '.jpeg');
+            fd.append('image', this.state.selectedFile, `${posts.data[posts.data.length - 1].id}.jpeg`);
             axios.post('https://us-central1-top-shelf-708be.cloudfunctions.net/uploadFile', fd, {
               onUploadProgress: progressEvent => {
                 console.log('Upload progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
               }
             })
               .then(res => {
-                console.log(res);
+                this.props.firebase.storage().ref().child(`${posts.data[posts.data.length - 1].id}.jpeg`).getDownloadURL()
+                  .then((url) => {
+                    axios.put('/api/post', { id: posts.data[posts.data.length - 1].id, data: { body: url } })
+                      .then(() => {
+                        console.log('success');
+                      });
+                  });
               });
           })
+      })
+      .catch((err) => {
+        alert('Something went wrong here!');
       });
   }
 
