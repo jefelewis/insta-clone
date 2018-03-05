@@ -82,23 +82,34 @@ li.dropdown {
 }
 
 #details {
-  background-color:  rgb(160, 216, 238);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  /* background-color: rgb(160, 216, 238); */
+  /* position: fixed; */
+  /* top: 20px; */
   height: 200px;
+  width: 100%;
+  /* text-align: center; */
 }
 
 .hellotop {
-  float: top;
-  border: solid red;
+  padding-top: 2%;
+  margin:0 auto;
+  text-align: center;
 }
 
 .hello {
-  padding: 10%;
-  width: 10px;
-  height: 10px;
-  border: solid red;
+  /* padding-top: 5%; */
+  padding-left: 2%;
+  float:left;
+  width:100px
+}
+
+.hellobottom {
+  text-align: center;
+}
+
+.hellopic {
+  padding-left: 12.5%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+  float: left;
 }
