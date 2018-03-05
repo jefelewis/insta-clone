@@ -11,7 +11,6 @@ class Postlist extends Component {
       <div name='Postlist'>
         <Add email={this.props.email} firebase={this.props.firebase} />
         {this.props.posts && this.props.posts.map((post, key) => {
-          console.log(this.props);
           for (let i = 0; i < this.props.users.length; i++) {
             if (post.user_id === this.props.users[i].id) {
               return (

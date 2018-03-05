@@ -30,14 +30,13 @@ class Post extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       
       <div className="postview">
         <Info image={this.props.user.profile_picture} username={this.props.user.username}/>
         <Content content={this.props.post.body}/>
         <Likes likes={this.props.post.likesCount}/>
-        <Comment comments={this.props.post.comments}/>
+        <Comment comments={this.props.post.comments} users={this.props.users}/>
       </div>
     );
   }
