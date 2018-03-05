@@ -23,10 +23,9 @@ router.get('/users', async (req, res) => {
     }
     
     posts = posts.sort((a, b) => {
-      console.log('a:', a.createdAt.split('-')[0]);
-      console.log('b:', b.createdAt.split('-')[0]);
+      return b.id - a.id;
     });
-
+    
     res.send(posts);
   } catch (err) {
     res.sendStatus(500);
@@ -35,8 +34,19 @@ router.get('/users', async (req, res) => {
 
 router.get('/following', async (req, res) => {
   try {
+    let posts = [];
     let followings = await followingsFollowersController.fetchUserFollowings(req.query.username);
-    res.send(followings);
+
+    for (let i = 0; i < followings.length; i++) {
+      let userPosts = await postsController.fetchUserPosts(followings[i].username);
+      posts = posts.concat(userPosts);
+    }
+
+    posts = posts.sort((a, b) => {
+      return b.id - a.id;
+    });
+
+    res.send(posts);
   } catch (err) {
     res.sendStatus(500);
   }
