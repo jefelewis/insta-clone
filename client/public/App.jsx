@@ -16,7 +16,8 @@ class App extends Component {
       active: true,
       render: 'Postlist',
       email: '',
-      firebase: firebase
+      firebase: firebase,
+      following: true
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -95,6 +96,10 @@ class App extends Component {
     } else if (e.target.name === 'logout') {
       const errHandler = firebase.auth().signOut();
       errHandler.catch((e) => console.log(e.message));
+    } else if (e.target.name === 'follow') {
+      this.setState({
+        following: !this.state.following
+      })
     }
   }
 
@@ -104,11 +109,12 @@ class App extends Component {
     });
   }
 
+
   render() {
     return (
       <Router>
-        <div className="appmain">
-          <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
+        <div>
+          <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} following={this.state.following}/>
           <div className="space"></div>
           <View
             posts={this.state.posts}
