@@ -126,6 +126,7 @@ class App extends Component {
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} following={this.state.following}/>
           <div className="space"></div>
           <View
+            following={this.state.following}
             posts={this.state.posts}
             users={this.state.users}
             click={this.onClickHandler}
