@@ -80,7 +80,7 @@ class Add extends React.Component {
     return (
       <div align='center'>
         <input 
-          // style={{display: 'none'}} //remove this style to display selected file name
+          style={{display: 'none'}} //remove this style to display selected file name
           type="file" 
           onChange={this.fileSelectedHandler} 
           ref={fileInput => this.fileInput = fileInput} />
