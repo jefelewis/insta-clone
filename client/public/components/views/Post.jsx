@@ -30,13 +30,14 @@ class Post extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       
       <div>
-        <Info image={this.props.content.image} username={this.props.content.username}/>
-        <Content content={this.props.content.body}/>
-        <Likes likes={this.props.content.likes}/>
-        <Comment comments={this.props.content.comments}/>
+        <Info image={this.props.user.profile_picture} username={this.props.user.username}/>
+        <Content content={this.props.post.body}/>
+        <Likes likes={this.props.post.likesCount}/>
+        <Comment comments={this.props.post.comments}/>
       </div>
     );
   }

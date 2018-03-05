@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    let postsArray = [];
+    var postsArray = [];
 
     var config = {
       apiKey: API.fireBaseApiKey,
@@ -68,10 +68,12 @@ class App extends Component {
         axios.get('/api/post', {params: {username: user.username}})
           .then((posts) => {
             postsArray = postsArray.concat(posts.data);
-            console.log(postsArray)
+            this.setState({
+              posts: postsArray
+            });
           })
       });
-      console.log(this.state);
+
     })
     .catch(()=> {
       console.log('I am a failure')
@@ -123,13 +125,15 @@ class App extends Component {
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
           <div className="space"></div>
           <View
+            posts={this.state.posts}
+            users={this.state.users}
             click={this.onClickHandler}
             change={this.onChangeHandler}
             active={this.state.active}
             render={this.state.render}
             userClickHandler={this.userClickHandler}
             email={this.state.email}
-          /> */}
+          /> 
 
         </div>
       </Router>
