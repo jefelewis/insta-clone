@@ -58,7 +58,7 @@ exports.onFileChange = functions.storage.object().onChange(event => {
 exports.uploadFile = functions.https.onRequest((req, res) => {
   //check request method, mobile app cors taken care of
   cors(req, res, () => {
-    console.log("entering http post logiccccccc, req method is :", req.method);
+    // console.log("entering http post logiccccccc, req method is :", req.method);
 
     // if (req.method === `OPTIONS`) {
     //   console.log("entering options logic");
@@ -70,7 +70,7 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
     // }
 
     if (req.method !== "POST") {
-      console.log("entering post logiciciah");
+      // console.log("entering post logiciciah");
       return res.status(200).json({
         message: "Not allowed"
       });
@@ -82,19 +82,23 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
     // req.headers['Access-Control-Allow-Origin'] = '*';
   
     const busboy = new Busboy({ headers: req.headers });
-    console.log("busboyyyy", busboy);
+    // console.log("busboyyyy", busboy);
     let uploadData = null;
     //once parsed, handle it
     busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
-      console.log("entering busboy logic");
+      // console.log("entering busboy logic");
       const filepath = path.join(os.tmpdir(), filename);
       uploadData = { file: filepath, type: mimetype };
       file.pipe(fs.createWriteStream(filepath));
     });
 
     busboy.on("finish", () => {
-      console.log("entering busboy finish logic");
       const bucket = gcs.bucket("top-shelf-708be.appspot.com");
+      console.log("entering busboy finish logic:", bucket);
+
+      
+
+
       bucket
         .upload(uploadData.file, {
           uploadType: "media",
@@ -105,7 +109,7 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
           }
         })
         .then(() => {
-          console.log("entering then logic");
+          console.log("entering then logic check");
           return res.status(200).json({
             message: "It worked!"
           });

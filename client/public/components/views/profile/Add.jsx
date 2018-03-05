@@ -17,6 +17,7 @@ class Add extends React.Component {
   fileSelectedHandler(e) {
     console.log('fileselectedhandler: ', e.target.files[0]);
 
+    // console.log('fileselectedhandler: ', e.target.files[0])
     this.setState({
       selectedFile: e.target.files[0]
     });
@@ -53,6 +54,9 @@ class Add extends React.Component {
   profilePicUploadHandler(e) {
     const fd = new FormData();
     fd.append('image', this.state.selectedFile, `${this.props.email}.jpeg`);
+    // console.log('fileupdloadhandler: ', fd)
+    // fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    // console.log('fd after append is :', fd)
     axios.post('https://us-central1-top-shelf-708be.cloudfunctions.net/uploadFile', fd, {
       onUploadProgress: progressEvent => {
         console.log('Upload progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')

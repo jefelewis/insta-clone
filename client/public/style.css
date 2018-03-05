@@ -31,7 +31,9 @@ div.right {
 }
 
 .row {
+<<<<<<< HEAD
   background-color: rgb(160, 216, 238);
+<<<<<<< HEAD
   position: fixed;
   /* top: 20px; */
   width: 100%;
@@ -59,6 +61,14 @@ div.right {
   padding-left: 2%;
   float:left;
   width:100px;
+=======
+=======
+  background-color: rgb(255, 255, 255);
+  /* position: fixed;
+  top: 20px;
+  width: 100%; */
+>>>>>>> save before rebase
+>>>>>>> save before rebase
 }
 
 li.dropdown {
@@ -69,6 +79,19 @@ li.dropdown {
   border: none !important;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+/* .dropdown-toggle {
+  aria-expanded: true;
+} */
+
+>>>>>>> save before rebase
+#details {
+  background: transparent;
+}
+>>>>>>> save before rebase
 
 #profilepic {
   border-radius: 50%;
