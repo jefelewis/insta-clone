@@ -25,10 +25,8 @@ class View extends Component {
     return (
       <div>
         <div>
-          {/* Need to Handle these loading on certain conditions */}
-          
           {!this.props.active ? <Login click={this.props.click} change={this.props.change} /> 
-          : this.props.render === 'Postlist' ? <Postlist posts={this.props.posts} users={this.props.users}/>
+          : this.props.render === 'Postlist' ? <Postlist posts={this.props.posts} users={this.props.users} email={this.props.email} firebase={this.props.firebase} />
           : this.props.render === 'Profile' ? <Profile username={this.state.username || this.props.email} email={this.props.email} profileClick={this.profileClick} />
           : this.props.render ===  'Comments' ?  <Comments /> : null}
         </div>
