@@ -13,11 +13,19 @@ class Details extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div className="rightbanner">
         <button style={{width: 70}}><Link to="/"> Home </Link></button><br />
         <button style={{width: 70}} onClick={this.props.userClickHandler}><Link to="/user"> User </Link></button><br />
         { !this.props.active ? null : <button style={{width: 70}} name="logout" onClick={this.props.click}>Logout</button> }
       </div>
+=======
+            <div className="rightbanner">
+              <button style={{width: 70}}><Link to="/"> Home </Link></button><br />
+              <button style={{width: 70}} onClick={this.props.userClickHandler}><Link to="/user"> User </Link></button><br />
+              { !this.props.active ? null : <button style={{width: 70}} name="logout" onClick={this.props.click}>Logout</button> }
+            </div>
+>>>>>>> save before commit/rebase
     );
   }
 }
