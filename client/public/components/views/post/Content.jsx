@@ -7,7 +7,7 @@ class Content extends Component {
 
   render() {
     return (
-      <div>
+      <div className="contentview">
         {/* Actual Content, Currently Only Renders Images */}
         <img src={this.props.content} height="600" width="600" />
       </div>

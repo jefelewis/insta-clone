@@ -25,7 +25,7 @@ class Info extends Component {
   render() {
     // OnClick Handler that sends the user info all the way back up to view, to render the profile page instead of PostList
     return (
-      <div onClick={()=> {this.props.profileClick(this.props.username)}}>
+      <div className="infoview" onClick={()=> {this.props.profileClick(this.props.username)}}>
         <img src={this.props.image} height="150" width="150" /><br />
         {this.props.username}
       </div>

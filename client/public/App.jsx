@@ -121,7 +121,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="appmain">
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
           <div className="space"></div>
           <View

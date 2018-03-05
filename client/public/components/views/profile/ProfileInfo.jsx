@@ -44,7 +44,7 @@ class ProfileInfo extends React.Component {
           <h6 className="col text-center">{this.props.bio}</h6>
         </div>
 
-        {/* <div>
+        <div className="profileprofileinfo">
           {
             this.props.posts.map((post) => 
               <div key={post.id}>
@@ -60,7 +60,7 @@ class ProfileInfo extends React.Component {
               </div>
             )
           }
-        </div> */}
+        </div>
       </div>
     );
   }
