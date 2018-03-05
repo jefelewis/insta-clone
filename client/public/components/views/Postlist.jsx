@@ -10,12 +10,12 @@ class Postlist extends Component {
     return (
       <div name='Postlist'>
         <Add />
-        {this.props.posts && this.props.posts.map((post) => {
+        {this.props.posts && this.props.posts.map((post, key) => {
           console.log(this.props);
           for (let i = 0; i < this.props.users.length; i++) {
             if (post.user_id === this.props.users[i].id) {
               return (
-                <Post post={post} user={this.props.users[i]}/>
+                <Post post={post} key={key} user={this.props.users[i]}/>
               )
             }
           }
