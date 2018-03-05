@@ -10,7 +10,7 @@ class Comment extends Component {
       <div className="commentview">
         {this.props.comments.map((comment) => {
           return (
-            <div>
+            <div className="commentscommentview">
               {comment.username}: {comment.body}
             </div>
           )
