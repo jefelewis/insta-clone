@@ -50,11 +50,7 @@ div.right {
 }
 
 .rightbanner {
-<<<<<<< HEAD
-  padding-top: .5%;
-=======
   padding-top: 0.5%;
->>>>>>> 72389b2e8a26bd06340becb8189d4782a61774f5
   float:right;
   width:100px;
 }
