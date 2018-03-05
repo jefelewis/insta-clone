@@ -9,40 +9,41 @@ class ProfileInfo extends React.Component {
 
   render() {
     return (
-      <div className="container col-md-10" id="details">
-        <div className="row">
-          <div className="col text-center text-align-center">
+      <div id="details">
+
+        
+          <div className="hellotop">
             <h4><strong>{this.props.username}</strong></h4>
           </div>
+        
+        
+        <div className="hello">
+          <img src={this.props.pic} id="profilepic"></img>
         </div>
 
-        <div className="row text-center">
-          <div className="col">
-            <img src={this.props.pic} id="profilepic"></img>
-          </div>
-          <div className="col">
-            <h6><strong>Posts</strong></h6>
-            <p>{this.props.posts.length}</p>
-          </div>
-          
-          <div className="col">
-            <h6><strong>Followers</strong></h6>
-            <p>{this.props.followers}</p>
-          </div>
-          
-          <div className="col">
-            <h6><strong>Following</strong></h6>
-            <p>{this.props.followings}</p>
-          </div>
-
-          <div className="col">
-            <button type="button" className="btn btn-primary btn-sm"><a/>Follow</button>
-          </div>
+        <div className="hello">
+          <h6><strong>Posts</strong></h6>
+          <p>{this.props.posts.length}</p>
+        </div>
+        
+        <div className="hello">
+          <h6><strong>Followers</strong></h6>
+          <p>{this.props.followers}</p>
+        </div>
+        
+        <div className="hello">
+          <h6><strong>Following</strong></h6>
+          <p>{this.props.followings}</p>
         </div>
 
-        <div className="row">
+        <div className="hello">
+          <button type="button" className="btn btn-primary btn-sm"><a/>Follow</button>
+        </div>
+
+        <div className="hello">
           <h6 className="col text-center">{this.props.bio}</h6>
         </div>
+
         <div>
           {
             this.props.posts.map((post) => 
