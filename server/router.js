@@ -16,12 +16,18 @@ router.get('/users', async (req, res) => {
   try {
     let posts = [];
     let users = await Users.findAll();
-
+    
     for (let i = 0; i < users.length; i++) {
-      await posts.concat();
+      let userPosts = await postsController.fetchUserPosts(users[i].username);
+      posts = posts.concat(userPosts);
     }
     
-    res.send(users);
+    posts = posts.sort((a, b) => {
+      console.log('a:', a.createdAt.split('-')[0]);
+      console.log('b:', b.createdAt.split('-')[0]);
+    });
+
+    res.send(posts);
   } catch (err) {
     res.sendStatus(500);
   }
