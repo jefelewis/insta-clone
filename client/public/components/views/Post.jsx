@@ -12,6 +12,7 @@ class Post extends Component {
   render() {
     return (
       <div>
+        {console.log('post.jsx')}
         <Content content={this.props.content} />
         <Info user={this.props.user} profileclick={this.props.profileclick} />
         <Likes like={this.props.like} likes={this.props.likes} />

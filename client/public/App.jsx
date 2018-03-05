@@ -14,11 +14,13 @@ class App extends Component {
     super();
 
     this.state = {
-      active: true
+      active: true,
+      render: 'Postlist'
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.profileClickHandler = this.profileClickHandler.bind(this);
   }
 
   componentWillMount() {
@@ -67,7 +69,7 @@ class App extends Component {
       axios.post('/api/user', {
         username: this.state.email,
         bio: 'Enter your bio here.',
-        profile_picture: 'https://rapidapi.com/assets/images/unknown_user.png'
+        profile_picture: 'https://pvrinstitute.org/handlers/profileimagehandler.ashx?id=5262'
       })
         .then(() => {
           console.log('success');
@@ -81,13 +83,26 @@ class App extends Component {
       errHandler.catch((e) => console.log(e.message));
     }
   }
+
+  profileClickHandler(e, user) {
+    this.setState({
+      render: 'Profile'
+    });
+  }
  
   render() {
     return (
       <Router>
         <div>
-          <Banner active={this.state.active} click={this.onClickHandler} />
-          <View click={this.onClickHandler} change={this.onChangeHandler} active={this.state.active} />
+          <Banner active={this.state.active} click={this.onClickHandler} profileClickHandler={this.profileClickHandler} />
+          <View
+            click={this.onClickHandler}
+            change={this.onChangeHandler}
+            active={this.state.active}
+            render={this.state.render}
+            profileClickHandler={this.profileClickHandler}
+            email={this.state.email}
+          />
           <Add email={this.state.email} firebase={firebase} />
         </div>
       </Router>

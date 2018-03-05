@@ -7,16 +7,6 @@ import Login from './views/Login.jsx';
 class View extends Component {
   constructor(props) {
     super(props);
-    
-    this.state = {
-      render: 'Postlist'
-    };
-  }
-
-  profileClickHandler(e, user) {
-    this.setState({
-      render: 'Profile'
-    });
   }
   
   render() {
@@ -26,9 +16,9 @@ class View extends Component {
           {/* Need to Handle these loading on certain conditions */}
           
           {!this.props.active ? <Login click={this.props.click} change={this.props.change} /> 
-          : this.state.render === 'Postlist' ? <Postlist />
-          : this.state.render === 'Profile' ? <Profile />
-          : this.state.render ===  'Comments' ?  <Comments /> : null}
+          : this.props.render === 'Postlist' ? <Postlist />
+          : this.props.render === 'Profile' ? <Profile email={this.props.email} />
+          : this.props.render ===  'Comments' ?  <Comments /> : null}
         </div>
       </div>
     );
