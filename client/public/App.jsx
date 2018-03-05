@@ -121,9 +121,8 @@ class App extends Component {
       <Router>
         <div>
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
-          <div className='space'></div>
-          {/* <View
-            data={this.state.data}
+          <div className="space"></div>
+          <View
             click={this.onClickHandler}
             change={this.onChangeHandler}
             active={this.state.active}

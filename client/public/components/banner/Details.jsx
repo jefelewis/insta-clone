@@ -15,8 +15,8 @@ class Details extends Component {
     return (
       <div className="rightbanner">
         <button style={{width: 70}}><Link to="/"> Home </Link></button><br />
-        <button style={{width: 70}}onClick={this.props.userClickHandler}><Link to="/user"> User </Link></button><br />
-        { !this.props.active ? null : <button name="logout" onClick={this.props.click} style={{width: 70}}>Logout</button> }
+        <button style={{width: 70}} onClick={this.props.userClickHandler}><Link to="/user"> User </Link></button><br />
+        { !this.props.active ? null : <button style={{width: 70}} name="logout" onClick={this.props.click}>Logout</button> }
       </div>
     );
   }
