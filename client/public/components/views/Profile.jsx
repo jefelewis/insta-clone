@@ -23,10 +23,9 @@ class Profile extends Component {
 
   componentDidMount() {
     const context = this;
-    console.log('profile props:', context.props);
+    
     axios.get('/api/user', { params: { username: context.props.username } })
       .then((userData) => {
-        console.log('after');
         axios.get('/api/follow', { params: { username: context.props.username } })
           .then((followData) => {
             axios.get('/api/post', { params: { username: context.props.username } })

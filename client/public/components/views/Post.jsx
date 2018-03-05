@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Content from './post/Content.jsx';
 import Info from './post/Info.jsx';
 import Likes from './post/Likes.jsx';
-import Comment from './post/Comment.jsx';
+import Comments from './Comments.jsx';
 import axios from 'axios';
 
 class Post extends Component {
   constructor(props) {
     super(props);
-
+    console.log('posts props:', props);
     this.state = {
       likes: props.post.likesCount
     };
@@ -36,7 +36,7 @@ class Post extends Component {
         <Content content={this.props.post.body} />
         <Info username={this.props.username} profileClick={this.props.profileClick} />
         <Likes like={this.props.like} likes={this.state.likes} />
-        <Comment profileClick={this.props.profileClick} userone={this.props.userone} usertwo={this.props.usertwo} click={this.props.click} />
+        <Comments profileClick={this.props.profileClick} comments={this.props.post.comments} />
       </div>
     );
   }

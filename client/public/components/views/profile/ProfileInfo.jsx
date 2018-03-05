@@ -48,7 +48,7 @@ class ProfileInfo extends React.Component {
             this.props.posts.map((post) => 
               <div key={post.id}>
                 <Link to={`/${post.id}`}>
-                  <img src={post.body} />
+                  <img src={post.body} className="post"></img>
                 </Link>
                 <Route
                   path={`/${post.id}`}
