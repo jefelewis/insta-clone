@@ -13,7 +13,7 @@ class Banner extends Component {
       <div className="row">
         <TopshelfPic />
         <Search />
-        <Details active={this.props.active} click={this.props.click} profileClickHandler={this.props.profileClickHandler} />
+        <Details active={this.props.active} click={this.props.click} userClickHandler={this.props.userClickHandler} />
       </div>
     );
   }

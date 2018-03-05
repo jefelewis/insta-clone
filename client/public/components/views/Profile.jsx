@@ -23,13 +23,13 @@ class Profile extends Component {
 
   componentDidMount() {
     const context = this;
-    console.log('hello');
-    axios.get('/api/user', { params: { username: this.props.email } })
+    
+    axios.get('/api/user', { params: { username: this.props.username } })
       .then((userData) => {
         console.log('after');
-        axios.get('/api/follow', { params: { username: this.props.email } })
+        axios.get('/api/follow', { params: { username: this.props.username } })
           .then((followData) => {
-            axios.get('/api/post', { params: { username: this.props.email } })
+            axios.get('/api/post', { params: { username: this.props.username } })
               .then((postData) => {
                 context.setState({
                   pic: userData.data.profile_picture,
@@ -53,11 +53,13 @@ class Profile extends Component {
         {this.state.state &&
           <ProfileInfo
             email={this.props.email}
+            username={this.props.username}
             pic={this.state.pic}
             bio={this.state.bio}
             followings={this.state.followings}
             followers={this.state.followers}
             posts={this.state.posts}
+            profileClick={this.props.profileClick}
           />
         }
       </div>

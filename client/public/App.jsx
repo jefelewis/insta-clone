@@ -20,7 +20,7 @@ class App extends Component {
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
-    this.profileClickHandler = this.profileClickHandler.bind(this);
+    this.userClickHandler = this.userClickHandler.bind(this);
   }
 
   componentWillMount() {
@@ -84,7 +84,7 @@ class App extends Component {
     }
   }
 
-  profileClickHandler(e, user) {
+  userClickHandler(e, user) {
     this.setState({
       render: 'Profile'
     });
@@ -94,13 +94,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Banner active={this.state.active} click={this.onClickHandler} profileClickHandler={this.profileClickHandler} />
+          <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
           <View
             click={this.onClickHandler}
             change={this.onChangeHandler}
             active={this.state.active}
             render={this.state.render}
-            profileClickHandler={this.profileClickHandler}
+            userClickHandler={this.userClickHandler}
             email={this.state.email}
           />
           <Add email={this.state.email} firebase={firebase} />
