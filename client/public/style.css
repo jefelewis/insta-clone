@@ -32,6 +32,33 @@ div.right {
 
 .row {
   background-color: rgb(160, 216, 238);
+  position: fixed;
+  /* top: 20px; */
+  width: 100%;
+  text-align: center;
+}
+
+.space {
+  padding: 80px 80px;
+}
+
+.centerbanner {
+  padding-top: 2%;
+  display: inline-block;
+  margin:0 auto;
+  width:100px;
+}
+
+.rightbanner {
+  padding-top: 0.5%;
+  float:right;
+  width:100px;
+}
+
+.leftbanner {
+  padding-left: 2%;
+  float:left;
+  width:100px;
 }
 
 li.dropdown {
@@ -42,9 +69,6 @@ li.dropdown {
   border: none !important;
 }
 
-#details {
-  background: transparent;
-}
 
 #profilepic {
   border-radius: 50%;
@@ -55,4 +79,26 @@ li.dropdown {
 .post {
   width: 300px;
   height: 300px;
+}
+
+#details {
+  background-color:  rgb(160, 216, 238);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+}
+
+.hellotop {
+  float: top;
+  border: solid red;
+}
+
+.hello {
+  padding: 10%;
+  width: 10px;
+  height: 10px;
+  border: solid red;
 }
