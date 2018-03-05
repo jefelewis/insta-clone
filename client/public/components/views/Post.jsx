@@ -16,17 +16,17 @@ class Post extends Component {
   }
 
   like() {
-    // const context = this;
+    const context = this;
     
-    // axios.post('/like', { post_id: this.props.id, user_id: this.props.email })
-    //   .then(() => {
-    //     context.setState({
-    //       likes: context.state.likes + 1
-    //     });
-    //   })
-    //   .catch(() => {
-    //     alert('Something went wrong here!');
-    //   });
+    axios.post('/api/like', { post_id: this.props.id, user_id: this.props.email })
+      .then(() => {
+        context.setState({
+          likes: context.state.likes + 1
+        });
+      })
+      .catch(() => {
+        alert('Something went wrong here!');
+      });
   }
 
   render() {
