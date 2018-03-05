@@ -38,6 +38,7 @@ class Add extends React.Component {
               .then(res => {
                 this.props.firebase.storage().ref().child(`${posts.data[posts.data.length - 1].id}.jpeg`).getDownloadURL()
                   .then((url) => {
+                    console.log('url', url);
                     axios.put('/api/post', { id: posts.data[posts.data.length - 1].id, data: { body: url } })
                       .then(() => {
                         console.log('success');

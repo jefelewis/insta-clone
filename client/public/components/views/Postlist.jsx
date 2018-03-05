@@ -9,7 +9,7 @@ class Postlist extends Component {
   render() {
     return (
       <div name='Postlist'>
-        <Add />
+        <Add email={this.props.email} firebase={this.props.firebase} />
         {this.props.posts && this.props.posts.map((post, key) => {
           console.log(this.props);
           for (let i = 0; i < this.props.users.length; i++) {

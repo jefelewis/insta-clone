@@ -26,7 +26,7 @@ router.get('/users', async (req, res) => {
       return b.id - a.id;
     });
     
-    res.send(posts);
+    res.send({ posts: posts, users: users });
   } catch (err) {
     res.sendStatus(500);
   }

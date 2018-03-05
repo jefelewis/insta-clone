@@ -7,7 +7,6 @@ import Profile from './components/views/Profile.jsx';
 import firebase from 'firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
-// import dummy from './dummy.js';
 
 class App extends Component {
   constructor() {
@@ -16,7 +15,8 @@ class App extends Component {
     this.state = {
       active: true,
       render: 'Postlist',
-      email: ''
+      email: '',
+      firebase: firebase
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -54,26 +54,13 @@ class App extends Component {
         });
       }
     });
-
-    // this.setState({
-    //   data: dummy
-    // });
-
+    
     axios.get('/api/users')
     .then(({data})=> {
       this.setState({
-        users: data
-      })
-      data.forEach((user) => {
-        axios.get('/api/post', {params: {username: user.username}})
-          .then((posts) => {
-            postsArray = postsArray.concat(posts.data);
-            this.setState({
-              posts: postsArray
-            });
-          })
+        posts: data.posts,
+        users: data.users
       });
-
     })
     .catch(()=> {
       console.log('I am a failure')
@@ -85,7 +72,6 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   }
   
   onClickHandler(e) {
@@ -133,6 +119,7 @@ class App extends Component {
             render={this.state.render}
             userClickHandler={this.userClickHandler}
             email={this.state.email}
+            firebase={this.state.firebase}
           />
         </div>
       </Router>

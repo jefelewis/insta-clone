@@ -4,6 +4,7 @@ const postsController = require('../controllers/postsController.js');
 router.route('/')
   .post(async (req, res) => {
     try {
+      console.log('posting:', req.body);
       await postsController.addPost(req.body.username, req.body.data);
       res.sendStatus(200);
     } catch (err) {
