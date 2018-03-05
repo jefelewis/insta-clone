@@ -7,7 +7,7 @@ class Comment extends Component {
 
   render() {
     return (
-      <div>
+      <div className="commentview">
         {this.props.comments.map((comment) => {
           return (
             <div>

@@ -121,7 +121,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="appmain">
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
           <div className="space"></div>
           <View
@@ -133,8 +133,7 @@ class App extends Component {
             render={this.state.render}
             userClickHandler={this.userClickHandler}
             email={this.state.email}
-          /> 
-
+          />
         </div>
       </Router>
     );

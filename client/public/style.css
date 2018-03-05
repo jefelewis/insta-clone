@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(248, 244, 244);
+  background-color: rgb(255, 255, 255);
 }
 
 div.btn-group {
@@ -32,6 +32,7 @@ div.right {
 
 .row {
   background-color: rgb(160, 216, 238);
+  /* border: solid rgb(160, 216, 238); */
   position: fixed;
   /* top: 20px; */
   width: 100%;
@@ -77,28 +78,83 @@ li.dropdown {
 }
 
 .post {
+  margin-top: 10%;
   width: 300px;
   height: 300px;
 }
 
 #details {
-  background-color:  rgb(160, 216, 238);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  /* background-color: rgb(160, 216, 238); */
+  /* position: fixed; */
+  /* top: 20px; */
+  border: solid rgb(160, 216, 238);
   height: 200px;
+  width: 100%;
+  /* text-align: center; */
 }
 
 .hellotop {
-  float: top;
-  border: solid red;
+  padding-top: 2%;
+  margin:0 auto;
+  text-align: center;
 }
 
 .hello {
-  padding: 10%;
-  width: 10px;
-  height: 10px;
-  border: solid red;
+  /* padding-top: 5%; */
+  padding-left: 2%;
+  float:left;
+  width:100px
 }
+
+.hellobottom {
+  text-align: center;
+}
+
+.hellopic {
+  padding-left: 12.5%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+  float: left;
+}
+
+.postview {
+  margin-left: 10%;
+  margin-bottom: 20px;
+  width: 80%;
+  border: solid rgb(160, 216, 238);
+}
+.commentview {
+  /* border: solid rgb(139, 34, 34); */
+  margin-left: 200px;
+}
+
+.contentview {
+  /* border: solid rgb(139, 34, 34); */
+  margin-left: 200px;
+  float: top;
+}
+
+.infoview {
+  border: solid rgb(160, 216, 238);
+  float: left;
+}
+
+.likesview {
+  margin-left: 200px;
+  /* border: solid rgb(139, 34, 34); */
+  float: top;
+}
+
+.profilemain {
+  
+  border: solid rgb(139, 34, 34);
+  
+}
+
+.profileprofileinfo {
+  /* margin-top: 10%;
+  padding-top: 100px; */
+  /* border: solid rgb(139, 34, 34);  */
+}
+
+

@@ -48,7 +48,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profilemain">
         {this.state.state &&
           <ProfileInfo
             email={this.props.email}

@@ -7,7 +7,7 @@ class Likes extends Component {
 
   render() {
     return (
-      <div>
+      <div className="likesview">
         <button onClick={this.props.like} >{this.props.likes} People Liked This!</button> 
       </div>
     )

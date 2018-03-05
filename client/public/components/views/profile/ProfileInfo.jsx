@@ -17,7 +17,7 @@ class ProfileInfo extends React.Component {
           </div>
         
         
-        <div className="hello">
+        <div className="hellopic">
           <img src={this.props.pic} id="profilepic"></img>
         </div>
 
@@ -40,11 +40,11 @@ class ProfileInfo extends React.Component {
           <button type="button" className="btn btn-primary btn-sm"><a/>Follow</button>
         </div>
 
-        <div className="hello">
+        <div className="hellobottom">
           <h6 className="col text-center">{this.props.bio}</h6>
         </div>
 
-        <div>
+        <div className="profileprofileinfo">
           {
             this.props.posts.map((post) => 
               <div key={post.id}>
