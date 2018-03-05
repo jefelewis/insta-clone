@@ -4,7 +4,7 @@ const Posts = require('./models/posts.js');
 const Likes = require('./models/likes.js');
 const FollowingsFollowers = require('./models/followingsfollowers.js');
 
-db.sync()
+db.sync({ force: true })
   .then(() => {
     console.log('db synced');
   })

@@ -15,7 +15,8 @@ class App extends Component {
 
     this.state = {
       active: true,
-      render: 'Postlist'
+      render: 'Postlist',
+      email: ''
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -56,8 +57,6 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
-    console.log(this.state);
   }
   
   onClickHandler(e) {
@@ -89,7 +88,7 @@ class App extends Component {
       render: 'Profile'
     });
   }
- 
+
   render() {
     return (
       <Router>

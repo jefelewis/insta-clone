@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Comment from './post/Comment.jsx';
 //	There will be lots of sub components here
 //	path " import X from './comment/X.jsx' "
 
@@ -10,18 +11,34 @@ import React, { Component } from 'react';
 	View All Component (Could be added to Comments Component)
 */
 
-class Comment extends Component {
-    constructor() {
-        super();
-    }
+class Comments extends Component {
+  constructor(props) {
+    super(props);
+    console.log('commentss props:', props);
+    this.renderComment = this.renderComment.bind(this);
+  }
 
-    render() {
-        return (
-            <div>
-              
-            </div>
-        );
-    }
+  renderComment(comment) {
+    return (
+      <Comment comment={comment}>
+        {comment.comments.map((sub) =>
+          this.renderComment(sub)
+        )}
+      </Comment>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.props.comments.map((comment) => 
+            this.renderComment(comment)
+          )
+        }
+      </div>
+    );
+  }
 }
 
-export default Comment;
+export default Comments;
