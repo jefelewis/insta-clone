@@ -1,4 +1,3 @@
-import Add from '../public/components/views/profile/Add.jsx';
 import React, { Component } from 'react';
 import Banner from './components/Banner.jsx';
 import View from './components/View.jsx';
@@ -8,6 +7,7 @@ import Profile from './components/views/Profile.jsx';
 import firebase from 'firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
+// import dummy from './dummy.js';
 
 class App extends Component {
   constructor() {
@@ -25,6 +25,8 @@ class App extends Component {
   }
 
   componentWillMount() {
+    let postsArray = [];
+
     var config = {
       apiKey: API.fireBaseApiKey,
       authDomain: 'top-shelf-708be.firebaseapp.com',
@@ -39,24 +41,49 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((User) => {
       if (User) {
         console.log(User.email, 'logged in!');
-
         this.setState({
+          render: 'Postlist',
           active: true
         });
       } else {
         console.log('Logged out!');
 
         this.setState({
+          render: 'Login',
           active: false
         });
       }
     });
+
+    // this.setState({
+    //   data: dummy
+    // });
+
+    axios.get('/api/users')
+    .then(({data})=> {
+      this.setState({
+        users: data
+      })
+      data.forEach((user) => {
+        axios.get('/api/post', {params: {username: user.username}})
+          .then((posts) => {
+            postsArray = postsArray.concat(posts.data);
+            console.log(postsArray)
+          })
+      });
+      console.log(this.state);
+    })
+    .catch(()=> {
+      console.log('I am a failure')
+    })
+    
   }
 
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   }
   
   onClickHandler(e) {
@@ -94,15 +121,17 @@ class App extends Component {
       <Router>
         <div>
           <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
-          <View
+          <div className='space'></div>
+          {/* <View
+            data={this.state.data}
             click={this.onClickHandler}
             change={this.onChangeHandler}
             active={this.state.active}
             render={this.state.render}
             userClickHandler={this.userClickHandler}
             email={this.state.email}
-          />
-          <Add email={this.state.email} firebase={firebase} />
+          /> */}
+
         </div>
       </Router>
     );

@@ -7,6 +7,7 @@ router.route('/')
       await usersController.addUser(req.body);
       res.sendStatus(200);
     } catch (err) {
+      console.log('Throwing this error')
       res.sendStatus(500);
     }
   })
@@ -27,10 +28,12 @@ router.route('/')
     }
   })
   .put(async (req, res) => {
+    //image is in req.body.data.profilepicture
     try {
       await usersController.updateUser(req.body.username, req.body.data);
       res.sendStatus(200);
     } catch (err) {
+
       res.sendStatus(500);
     }
   });

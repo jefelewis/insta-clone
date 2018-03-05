@@ -61,7 +61,7 @@ class Add extends React.Component {
       .then((res) => {
         this.props.firebase.storage().ref().child(`${this.props.email}.jpeg`).getDownloadURL()
           .then((url) => {
-            axios.put('/api/user', { username: this.props.email, data: { profile_picture: url } })
+            axios.put('/api/user', { username: this.props.email, data: { profilepicture: url } })
               .then(() => {
                 console.log('Success!');
               });
@@ -74,7 +74,7 @@ class Add extends React.Component {
 
   render() {
     return (
-      <div>
+      <div align='center'>
         <input 
           style={{display: 'none'}} //remove this style to display selected file name
           type="file" 

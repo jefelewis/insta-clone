@@ -32,6 +32,33 @@ div.right {
 
 .row {
   background-color: rgb(160, 216, 238);
+  position: fixed;
+  /* top: 20px; */
+  width: 100%;
+  text-align: center;
+}
+
+.space {
+  padding: 80px 80px;
+}
+
+.centerbanner {
+  padding-top: 2%;
+  display: inline-block;
+  margin:0 auto;
+  width:100px;
+}
+
+.rightbanner {
+  padding-top: .5%;
+  float:right;
+  width:100px;
+}
+
+.leftbanner {
+  padding-left: 2%;
+  float:left;
+  width:100px;
 }
 
 li.dropdown {

@@ -8,7 +8,13 @@ class Comment extends Component {
   render() {
     return (
       <div>
-        <button name="comment" onClick={this.props.viewComments}>View Comments</button>
+        {this.props.comments.map((comment) => {
+          return (
+            <div>
+              {comment.username}: {comment.body}
+            </div>
+          )
+        })}
       </div>
     );
   }

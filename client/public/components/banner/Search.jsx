@@ -7,13 +7,13 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="col-md-4">
-        <form className="navbar-form navbar-left" role="search">
+      <div className="centerbanner">
+        {/* <form className="navbar-form navbar-left" role="search">
           <div className="form-group">
             <input type="text" placeholder="Search" />
             <button type="submit">Submit</button>
           </div>
-        </form>
+        </form> */}
       </div>
     );
   }

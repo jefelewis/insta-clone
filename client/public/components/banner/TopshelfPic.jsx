@@ -7,7 +7,7 @@ class TopShelfPic extends Component {
 
   render() {
     return (
-      <div className="col-md-4">
+      <div className="leftbanner">
         <img src="../TopShelf.png" height="100" width="100" />
       </div>
     );
