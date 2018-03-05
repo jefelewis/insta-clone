@@ -22,6 +22,7 @@ class App extends Component {
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.onFollowClick = this.onFollowClick.bind(this);
   }
 
   componentWillMount() {
@@ -98,10 +99,24 @@ class App extends Component {
     } else if (e.target.name === 'follow') {
       this.setState({
         following: !this.state.following
+      });
+      axios.get('/api/following', {params: {username: this.state.email}})
+        .then((posts) => {
+          this.setState({
+            posts: posts
+          })
+        })
+    } 
+  }
+  onFollowClick(user) {
+    console.log(this.state);
+    axios.post('/api/follow', {following: user, follower: this.state.email})
+      .then(()=> {
+        console.log('I worked?')
       })
-    } else if (e.target.name === 'following') {
-      console.log(user);
-    }
+      .catch(() => {
+        console.log('Alex Lied to Me!');
+      })
   }
 
   render() {
@@ -119,6 +134,7 @@ class App extends Component {
             render={this.state.render}
             email={this.state.email}
             firebase={this.state.firebase}
+            followclick={this.onFollowClick}
           />
         </div>
       </Router>

@@ -4,6 +4,7 @@ const followingsFollowersController = require('../controllers/followingsFollower
 router.route('/')
   .post(async (req, res) => {
     try {
+      console.log(req.body)
       await followingsFollowersController.addFollowingFollower(req.body);
       res.sendStatus(200);
     } catch (err) {
