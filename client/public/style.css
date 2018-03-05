@@ -1,5 +1,10 @@
 body {
-  background-color: rgb(255, 255, 255);
+  background-image: url("http://www.hddesktopbackgrounds.us/backgrounds-images/1920x1080/v3jg0-wallpapers-041512198-1920x1080.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 div.btn-group {
@@ -31,9 +36,14 @@ div.right {
 }
 
 .row {
-  background-color: rgb(160, 216, 238);
+  border: solid rgb(11, 22, 241);
+  background-image: url("http://www.hddesktopbackgrounds.us/backgrounds-images/1920x1080/v3jg0-wallpapers-041512198-1920x1080.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* border: solid rgb(160, 216, 238); */
-  position: fixed;
+  /* position: fixed; */
   /* top: 20px; */
   width: 100%;
   text-align: center;
@@ -47,7 +57,7 @@ div.right {
   padding-top: 2%;
   display: inline-block;
   margin:0 auto;
-  width:100px;
+  width:200px;
 }
 
 .rightbanner {
@@ -87,7 +97,7 @@ li.dropdown {
   /* background-color: rgb(160, 216, 238); */
   /* position: fixed; */
   /* top: 20px; */
-  border: solid rgb(160, 216, 238);
+  border: solid rgb(11, 22, 241);
   height: 200px;
   width: 100%;
   /* text-align: center; */
@@ -121,7 +131,12 @@ li.dropdown {
   margin-left: 10%;
   margin-bottom: 20px;
   width: 80%;
-  border: solid rgb(160, 216, 238);
+  border: solid rgb(11, 22, 241);
+}
+
+.commentscommentview {
+  background-color: white;
+  width: 600px;
 }
 .commentview {
   /* border: solid rgb(139, 34, 34); */
@@ -135,8 +150,12 @@ li.dropdown {
 }
 
 .infoview {
-  border: solid rgb(160, 216, 238);
+  border: solid rgb(11, 22, 241);
   float: left;
+}
+
+.contentviewimage {
+  border: solid rgb(11, 22, 241);
 }
 
 .likesview {
@@ -147,7 +166,7 @@ li.dropdown {
 
 .profilemain {
   
-  border: solid rgb(139, 34, 34);
+  border: solid rgb(11, 22, 241);
   
 }
 

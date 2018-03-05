@@ -8,6 +8,7 @@ class Search extends Component {
   render() {
     return (
       <div className="centerbanner">
+      <h1><strong>Top-Shelf</strong></h1>
         {/* <form className="navbar-form navbar-left" role="search">
           <div className="form-group">
             <input type="text" placeholder="Search" />
