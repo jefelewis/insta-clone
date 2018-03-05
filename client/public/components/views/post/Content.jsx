@@ -9,7 +9,7 @@ class Content extends Component {
     return (
       <div>
         {/* Actual Content, Currently Only Renders Images */}
-        <img src={this.props.content.body} height="600" width="600" />
+        <img src={this.props.content} height="600" width="600" />
       </div>
     )
   }

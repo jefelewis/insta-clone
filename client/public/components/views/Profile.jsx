@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProfileInfo from './profile/ProfileInfo.jsx';
+import axios from 'axios';
 
 //	There will be lots of sub components here
 //	path " import X from './profile/X.jsx' "
@@ -14,13 +15,53 @@ import ProfileInfo from './profile/ProfileInfo.jsx';
 class Profile extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      state: false
+    };
+  }
+
+  componentDidMount() {
+    const context = this;
+    
+    axios.get('/api/user', { params: { username: this.props.username } })
+      .then((userData) => {
+        console.log('after');
+        axios.get('/api/follow', { params: { username: this.props.username } })
+          .then((followData) => {
+            axios.get('/api/post', { params: { username: this.props.username } })
+              .then((postData) => {
+                context.setState({
+                  pic: userData.data.profile_picture,
+                  bio: userData.data.bio,
+                  followings: followData.data.followings.length,
+                  followers: followData.data.followers.length,
+                  posts: postData.data,
+                  state: true
+                });
+              });
+          });
+      })
+      .catch(() => {
+        alert('Something went wrong here!');
+      });
   }
 
   render() {
     return (
       <div>
-        <ProfilePic />
-        <ProfileInfo />
+        {this.state.state &&
+          <ProfileInfo
+            email={this.props.email}
+            username={this.props.username}
+            pic={this.state.pic}
+            bio={this.state.bio}
+            followings={this.state.followings}
+            followers={this.state.followers}
+            posts={this.state.posts}
+            profileClick={this.props.profileClick}
+          />
+        }
       </div>
     );
   }
