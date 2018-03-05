@@ -22,7 +22,6 @@ class App extends Component {
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
-    this.userClickHandler = this.userClickHandler.bind(this);
   }
 
   componentWillMount() {
@@ -100,15 +99,10 @@ class App extends Component {
       this.setState({
         following: !this.state.following
       })
+    } else if (e.target.name === 'following') {
+      console.log(user);
     }
   }
-
-  userClickHandler(e, user) {
-    this.setState({
-      render: 'Profile'
-    });
-  }
-
 
   render() {
     return (
@@ -123,7 +117,6 @@ class App extends Component {
             change={this.onChangeHandler}
             active={this.state.active}
             render={this.state.render}
-            userClickHandler={this.userClickHandler}
             email={this.state.email}
             firebase={this.state.firebase}
           />

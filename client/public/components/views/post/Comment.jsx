@@ -6,7 +6,6 @@ class Comment extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="commentview">
         {this.props.comments.map((comment, key) => {
