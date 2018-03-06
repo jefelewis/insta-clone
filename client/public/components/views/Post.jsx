@@ -36,7 +36,7 @@ class Post extends Component {
         <Info image={this.props.user.profile_picture} username={this.props.user.username} click={this.props.click}/>
         <Content content={this.props.post.body}/>
         <Likes likes={this.props.post.likesCount}/>
-        <Comment comments={this.props.post.comments} postId={this.props.post.id} email={this.props.email} />
+        <Comment comments={this.props.post.comments} postId={this.props.post.id} users={this.props.users} email={this.props.email} />
       </div>
     );
   }
