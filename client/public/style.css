@@ -36,7 +36,8 @@ div.right {
 }
 
 .row {
-  border: solid rgb(11, 22, 241);
+  /* border: solid rgb(11, 22, 241); */
+  border: solid rgb(121, 151, 234);
   background-image: url("https://intownphotography.files.wordpress.com/2013/08/3119999-545079-abstract-light-blue-hand-drawn-pattern-waves-background-seamless-pattern-can-be-used-for-wallpaper-pattern-fills-web-page-background-surface-textures.jpeg");
   background-attachment: fixed;
   background-position: center;
@@ -58,6 +59,7 @@ div.right {
   display: inline-block;
   margin:0 auto;
   width:200px;
+  text-shadow: 3px 4px 5px rgb(7, 103, 228);
 }
 
 .rightbanner {
@@ -97,7 +99,7 @@ li.dropdown {
   /* background-color: rgb(160, 216, 238); */
   /* position: fixed; */
   /* top: 20px; */
-  border: solid rgb(11, 22, 241);
+  border: solid rgb(121, 151, 234);
   height: 200px;
   width: 100%;
   /* text-align: center; */
@@ -131,7 +133,7 @@ li.dropdown {
   margin-left: 10%;
   margin-bottom: 20px;
   width: 80%;
-  border: solid rgb(11, 22, 241);
+  border: solid rgb(121, 151, 234);
 }
 
 .commentscommentview {
@@ -150,12 +152,13 @@ li.dropdown {
 }
 
 .infoview {
-  border: solid rgb(11, 22, 241);
+  border: solid rgb(121, 151, 234);
   float: left;
+  background-color: white;
 }
 
 .contentviewimage {
-  border: solid rgb(11, 22, 241);
+  border: solid rgb(121, 151, 234);
 }
 
 .likesview {
@@ -166,7 +169,7 @@ li.dropdown {
 
 .profilemain {
   
-  border: solid rgb(11, 22, 241);
+  border: solid rgb(121, 151, 234);
   
 }
 
