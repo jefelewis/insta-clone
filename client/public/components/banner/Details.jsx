@@ -13,11 +13,11 @@ class Details extends Component {
 
   render() {
     return (
-            <div className="rightbanner">
-              <button style={{width: 70}}><Link to="/"> Home </Link></button><br />
-              <button style={{width: 70}} onClick={this.props.userClickHandler}><Link to="/user"> User </Link></button><br />
-              { !this.props.active ? null : <button style={{width: 70}} name="logout" onClick={this.props.click}>Logout</button> }
-            </div>
+      <div className="rightbanner">
+        {this.props.active ? <button style={{width: 80}} name='follow' onClick={this.props.click}>{this.props.following ? 'Everyone' : 'Following' }</button> : null }
+        {/* <button style={{width: 70}} onClick={this.props.userClickHandler}><Link to="/user"> Profile </Link></button><br /> */}
+        { !this.props.active ? null : <button style={{width: 80}} name="logout" onClick={this.props.click}>Logout</button> }
+      </div>
     );
   }
 }

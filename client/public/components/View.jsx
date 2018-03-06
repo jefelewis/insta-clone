@@ -26,7 +26,7 @@ class View extends Component {
       <div>
         <div>
           {!this.props.active ? <Login click={this.props.click} change={this.props.change} /> 
-          : this.props.render === 'Postlist' ? <Postlist posts={this.props.posts} users={this.props.users} email={this.props.email} firebase={this.props.firebase} />
+          : this.props.render === 'Postlist' ? <Postlist posts={this.props.posts} users={this.props.users} click={this.props.click} followclick={this.props.followclick} email={this.props.email} firebase={this.props.firebase} following={this.props.following} follower={this.props.follower}/>
           : this.props.render === 'Profile' ? <Profile username={this.state.username || this.props.email} email={this.props.email} profileClick={this.profileClick} />
           : this.props.render ===  'Comments' ?  <Comments /> : null}
         </div>

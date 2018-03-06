@@ -16,12 +16,13 @@ class App extends Component {
       active: true,
       render: 'Postlist',
       email: '',
-      firebase: firebase
+      firebase: firebase,
+      following: true
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
-    this.userClickHandler = this.userClickHandler.bind(this);
+    this.onFollowClick = this.onFollowClick.bind(this);
   }
 
   componentWillMount() {
@@ -43,14 +44,16 @@ class App extends Component {
         console.log(User.email, 'logged in!');
         this.setState({
           render: 'Postlist',
-          active: true
+          active: true,
+          email: User.email
         });
       } else {
         console.log('Logged out!');
 
         this.setState({
           render: 'Login',
-          active: false
+          active: false,
+          email: ''
         });
       }
     });
@@ -65,7 +68,12 @@ class App extends Component {
     .catch(()=> {
       console.log('I am a failure')
     })
-    
+    axios.get('/api/following', {params: {username: this.state.email}})
+        .then((posts) => {
+          this.setState({
+            follower: posts
+          })
+        })
   }
 
   onChangeHandler(e) {
@@ -95,31 +103,41 @@ class App extends Component {
     } else if (e.target.name === 'logout') {
       const errHandler = firebase.auth().signOut();
       errHandler.catch((e) => console.log(e.message));
-    }
+    } else if (e.target.name === 'follow') {
+      this.setState({
+        following: !this.state.following
+      });
+    } 
   }
-
-  userClickHandler(e, user) {
-    this.setState({
-      render: 'Profile'
-    });
+  onFollowClick(user) {
+    console.log(this.state);
+    axios.post('/api/follow', {following: user, follower: this.state.email})
+      .then(()=> {
+        console.log('I worked?')
+      })
+      .catch(() => {
+        console.log('Alex Lied to Me!');
+      })
   }
 
   render() {
     return (
       <Router>
-        <div className="appmain">
-          <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} />
+        <div>
+          <Banner active={this.state.active} click={this.onClickHandler} userClickHandler={this.userClickHandler} following={this.state.following}/>
           <div className="space"></div>
           <View
+            following={this.state.following}
             posts={this.state.posts}
             users={this.state.users}
             click={this.onClickHandler}
             change={this.onChangeHandler}
             active={this.state.active}
             render={this.state.render}
-            userClickHandler={this.userClickHandler}
             email={this.state.email}
             firebase={this.state.firebase}
+            followclick={this.onFollowClick}
+            follower={this.state.follower}
           />
         </div>
       </Router>
