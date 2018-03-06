@@ -5,7 +5,7 @@ router.route('/')
   .post(async (req, res) => {
     try {
       console.log(req.body);
-      await likesController.addLike(req.body);
+      await likesController.addLike(req.body.username, req.body.postId);
       res.sendStatus(200);
     } catch (err) {
       res.sendStatus(500);
