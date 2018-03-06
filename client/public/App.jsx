@@ -44,14 +44,16 @@ class App extends Component {
         console.log(User.email, 'logged in!');
         this.setState({
           render: 'Postlist',
-          active: true
+          active: true,
+          email: User.email
         });
       } else {
         console.log('Logged out!');
 
         this.setState({
           render: 'Login',
-          active: false
+          active: false,
+          email: ''
         });
       }
     });
@@ -66,7 +68,12 @@ class App extends Component {
     .catch(()=> {
       console.log('I am a failure')
     })
-    
+    axios.get('/api/following', {params: {username: this.state.email}})
+        .then((posts) => {
+          this.setState({
+            follower: posts
+          })
+        })
   }
 
   onChangeHandler(e) {
@@ -100,12 +107,6 @@ class App extends Component {
       this.setState({
         following: !this.state.following
       });
-      axios.get('/api/following', {params: {username: this.state.email}})
-        .then((posts) => {
-          this.setState({
-            posts: posts
-          })
-        })
     } 
   }
   onFollowClick(user) {
@@ -136,6 +137,7 @@ class App extends Component {
             email={this.state.email}
             firebase={this.state.firebase}
             followclick={this.onFollowClick}
+            follower={this.state.follower}
           />
         </div>
       </Router>
