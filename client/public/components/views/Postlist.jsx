@@ -15,7 +15,7 @@ class Postlist extends Component {
           for (let i = 0; i < this.props.users.length; i++) {
             if (post.user_id === this.props.users[i].id) {
               return (
-                <Post post={post} key={key} user={this.props.users[i]}/>
+                <Post post={post} key={key} user={this.props.users[i]} email={this.props.email} />
               )
             }
           }
