@@ -18,7 +18,7 @@ class Post extends Component {
   like() {
     const context = this;
     
-    axios.post('/api/like', { post_id: this.props.id, user_id: this.props.email })
+    axios.post('/api/like', { post_id: this.props.post.id, user_id: this.props.email })
       .then(() => {
         context.setState({
           likes: context.state.likes + 1
@@ -37,7 +37,7 @@ class Post extends Component {
         <Info image={this.props.user.profile_picture} username={this.props.user.username}/>
         <Content content={this.props.post.body}/>
         <Likes likes={this.props.post.likesCount}/>
-        <Comment comments={this.props.post.comments}/>
+        <Comment comments={this.props.post.comments} postId={this.props.post.id} email={this.props.email} />
       </div>
     );
   }
